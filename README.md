@@ -24,7 +24,7 @@ A list of generic criteria has been compiled for users to search with, for examp
 
 ### Search Form
 
-![Business Incentives Search Form](https://github.com/GoCodeColorado/BusinessIncentives/blob/master/docs/Search%20Form.png)
+![Business Incentives Search Form](https://github.com/juliras/Business-Incentives/blob/master/docs/Search%20Form.png)
 
 ### Search Result
 
