@@ -1,0 +1,1419 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BusinessIncentivesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AssistanceType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ColoradoBusiness">
+          <Key>
+            <PropertyRef Name="EntityId" />
+          </Key>
+          <Property Name="EntityId" Type="bigint" Nullable="false" />
+          <Property Name="EntityName" Type="nvarchar" MaxLength="400" />
+          <Property Name="PrincipalAddress1" Type="nvarchar" MaxLength="400" />
+          <Property Name="PrincipalAddress2" Type="nvarchar" MaxLength="400" />
+          <Property Name="PrincipalCity" Type="nvarchar" MaxLength="400" />
+          <Property Name="PrincipalState" Type="nvarchar" MaxLength="40" />
+          <Property Name="PrincipalZipCode" Type="nvarchar" MaxLength="40" />
+          <Property Name="PrincipalCountry" Type="nvarchar" MaxLength="400" />
+          <Property Name="EntityStatus" Type="nvarchar" MaxLength="400" />
+          <Property Name="JurisdictionOfFormation" Type="nvarchar" MaxLength="400" />
+          <Property Name="EntityType" Type="nvarchar" MaxLength="400" />
+          <Property Name="EntityFormDate" Type="datetime2" Precision="7" />
+          <Property Name="InsertedDate" Type="datetime2" Precision="7" />
+          <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="CustomOpportunity">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Summary" Type="nvarchar(max)" />
+          <Property Name="FundingLevelID" Type="smallint" />
+          <Property Name="FundingLevelDetails" Type="nvarchar" MaxLength="300" />
+          <Property Name="AssistanceTypeID" Type="int" />
+          <Property Name="OpeningDate" Type="datetime2" Precision="7" />
+          <Property Name="ClosingDate" Type="datetime2" Precision="7" />
+          <Property Name="WebLink" Type="nvarchar" MaxLength="300" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="Email" Type="nvarchar" MaxLength="300" />
+          <Property Name="EligibilityKeywords" Type="nvarchar" MaxLength="2000" />
+          <Property Name="Origin" Type="nvarchar" MaxLength="300" />
+          <Property Name="InsertedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FieldCodedValue">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OriginID" Type="int" Nullable="false" />
+          <Property Name="FieldName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+          <Property Name="InsertedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FieldCodedValueOrigin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="InsertedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FundingLevel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="smallint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Opportunity">
+          <Key>
+            <PropertyRef Name="OpportunityID" />
+          </Key>
+          <Property Name="OpportunityID" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="OpportunityTitle" Type="nvarchar" MaxLength="300" />
+          <Property Name="OpportunityNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="OpportunityCategory" Type="nvarchar" MaxLength="4" />
+          <Property Name="OpportunityCategoryExplanation" Type="nvarchar" MaxLength="300" />
+          <Property Name="FundingInstrumentType" Type="nvarchar" MaxLength="5" />
+          <Property Name="CategoryOfFundingActivity" Type="nvarchar" MaxLength="200" />
+          <Property Name="CategoryExplanation" Type="nvarchar" MaxLength="4000" />
+          <Property Name="CFDANumbers" Type="nvarchar" MaxLength="200" />
+          <Property Name="EligibleApplicants" Type="nvarchar" MaxLength="200" />
+          <Property Name="AdditionalInformationOnEligibility" Type="nvarchar" MaxLength="4000" />
+          <Property Name="AgencyCode" Type="nvarchar" MaxLength="300" />
+          <Property Name="AgencyName" Type="nvarchar" MaxLength="300" />
+          <Property Name="PostDate" Type="datetime2" Precision="7" />
+          <Property Name="CloseDate" Type="datetime2" Precision="7" />
+          <Property Name="CloseDateExplanation" Type="nvarchar" MaxLength="4000" />
+          <Property Name="ExpectedNumberOfAwards" Type="nvarchar" MaxLength="20" />
+          <Property Name="EstimatedTotalProgramFunding" Type="nvarchar" MaxLength="20" />
+          <Property Name="AwardCeiling" Type="nvarchar" MaxLength="20" />
+          <Property Name="AwardFloor" Type="nvarchar" MaxLength="20" />
+          <Property Name="LastUpdatedDate" Type="datetime2" Precision="7" />
+          <Property Name="EstimatedSynopsisPostDate" Type="nvarchar" MaxLength="8" />
+          <Property Name="FiscalYear" Type="nvarchar" MaxLength="4" />
+          <Property Name="EstimatedSynopsisCloseDate" Type="nvarchar" MaxLength="8" />
+          <Property Name="EstimatedSynopsisCloseDateExplanation" Type="nvarchar" MaxLength="300" />
+          <Property Name="EstimatedAwardDate" Type="nvarchar" MaxLength="8" />
+          <Property Name="EstimatedProjectStartDate" Type="nvarchar" MaxLength="8" />
+          <Property Name="ArchiveDate" Type="datetime2" Precision="7" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="CostSharingOrMatchingRequirement" Type="nvarchar" MaxLength="4" />
+          <Property Name="AdditionalInformationText" Type="nvarchar" MaxLength="300" />
+          <Property Name="AdditionalInformationURL" Type="nvarchar" MaxLength="300" />
+          <Property Name="GrantorContactText" Type="nvarchar" MaxLength="2500" />
+          <Property Name="GrantorContactEmailDescription" Type="nvarchar" MaxLength="300" />
+          <Property Name="GrantorContactEmail" Type="nvarchar" MaxLength="300" />
+          <Property Name="GrantorContactName" Type="nvarchar" MaxLength="2500" />
+          <Property Name="GrantorContactPhoneNumber" Type="nvarchar" MaxLength="100" />
+          <Property Name="Version" Type="nchar" MaxLength="10" />
+          <Property Name="InsertedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OpportunityProgramXRef">
+          <Key>
+            <PropertyRef Name="OpportunityID" />
+            <PropertyRef Name="ProgramNumber" />
+          </Key>
+          <Property Name="OpportunityID" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="ProgramNumber" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PermissionLevel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="smallint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Program">
+          <Key>
+            <PropertyRef Name="ProgramNumber" />
+          </Key>
+          <Property Name="ProgramNumber" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="ProgramTitle" Type="nvarchar" MaxLength="800" />
+          <Property Name="PopularName_020" Type="nvarchar(max)" />
+          <Property Name="FederalAgency_030" Type="nvarchar" MaxLength="500" />
+          <Property Name="Authorization_040" Type="nvarchar(max)" />
+          <Property Name="Objectives_050" Type="nvarchar(max)" />
+          <Property Name="TypesOfAssistance_060" Type="nvarchar" MaxLength="4000" />
+          <Property Name="UsesAndUseRestrictions_070" Type="nvarchar(max)" />
+          <Property Name="ApplicantEligibility_081" Type="nvarchar(max)" />
+          <Property Name="BeneficiaryEligibility_082" Type="nvarchar(max)" />
+          <Property Name="CredentialsDocumentation_083" Type="nvarchar(max)" />
+          <Property Name="PreapplicationCoordination_091" Type="nvarchar(max)" />
+          <Property Name="ApplicationProcedures_092" Type="nvarchar(max)" />
+          <Property Name="AwardProcedure_093" Type="nvarchar(max)" />
+          <Property Name="Deadlines_094" Type="nvarchar(max)" />
+          <Property Name="RangeOfApprovalDisapprovalTime_095" Type="nvarchar(max)" />
+          <Property Name="Appeals_096" Type="nvarchar(max)" />
+          <Property Name="Renewals_097" Type="nvarchar(max)" />
+          <Property Name="FormulaAndMatchingRequirements_101" Type="nvarchar(max)" />
+          <Property Name="LengthAndTimePhasingOfAssistance_102" Type="nvarchar(max)" />
+          <Property Name="Reports_111" Type="nvarchar(max)" />
+          <Property Name="Audits_112" Type="nvarchar(max)" />
+          <Property Name="Records_113" Type="nvarchar(max)" />
+          <Property Name="AccountIdentification_121" Type="nvarchar" MaxLength="3000" />
+          <Property Name="Obligations_122" Type="nvarchar(max)" />
+          <Property Name="RangeAndAverageOfFinancialAssistance_123" Type="nvarchar(max)" />
+          <Property Name="ProgramAccomplishments_130" Type="nvarchar(max)" />
+          <Property Name="RegulationsGuidelinesAndLiterature_140" Type="nvarchar(max)" />
+          <Property Name="RegionalOrLocalOffice_151" Type="nvarchar(max)" />
+          <Property Name="HeadquartersOffice_152" Type="nvarchar(max)" />
+          <Property Name="WebsiteAddress_153" Type="nvarchar" MaxLength="800" />
+          <Property Name="RelatedPrograms_160" Type="nvarchar" MaxLength="4000" />
+          <Property Name="ExamplesOfFundedProjects_170" Type="nvarchar(max)" />
+          <Property Name="CriteriaForSelectingProposals_180" Type="nvarchar(max)" />
+          <Property Name="PublishedDate" Type="nvarchar" MaxLength="100" />
+          <Property Name="ParentShortname" Type="nvarchar" MaxLength="200" />
+          <Property Name="URL" Type="nvarchar" MaxLength="300" />
+          <Property Name="Recovery" Type="nvarchar" MaxLength="25" />
+          <Property Name="InsertedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varbinary(max)" Nullable="false" />
+          <Property Name="Salt" Type="varbinary(max)" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PermissionLevelID" Type="smallint" />
+          <Property Name="InsertedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserCustomOpportunityXRef">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="CustomOpportunityID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="CustomOpportunityID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserOpportunityXRef">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="OpportunityID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="OpportunityID" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserProgramXRef">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="ProgramNumber" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="ProgramNumber" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserSavedSearch">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="SearchJsonData" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BusinessIncentives.dbo.OpportunityView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="OpportunityView">
+          <Key>
+            <PropertyRef Name="OpportunityID" />
+            <PropertyRef Name="InsertedDate" />
+            <PropertyRef Name="UpdatedDate" />
+          </Key>
+          <Property Name="OpportunityID" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="OpportunityTitle" Type="nvarchar" MaxLength="300" />
+          <Property Name="OpportunityNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="OpportunityCategory" Type="nvarchar" MaxLength="4" />
+          <Property Name="OpportunityCategoryExplanation" Type="nvarchar" MaxLength="300" />
+          <Property Name="FundingInstrumentType" Type="nvarchar" MaxLength="5" />
+          <Property Name="CategoryOfFundingActivity" Type="nvarchar" MaxLength="200" />
+          <Property Name="CategoryExplanation" Type="nvarchar" MaxLength="4000" />
+          <Property Name="CFDANumbers" Type="nvarchar" MaxLength="200" />
+          <Property Name="EligibleApplicants" Type="nvarchar" MaxLength="200" />
+          <Property Name="AdditionalInformationOnEligibility" Type="nvarchar" MaxLength="4000" />
+          <Property Name="AgencyCode" Type="nvarchar" MaxLength="300" />
+          <Property Name="AgencyName" Type="nvarchar" MaxLength="300" />
+          <Property Name="PostDate" Type="datetime2" Precision="7" />
+          <Property Name="CloseDate" Type="datetime2" Precision="7" />
+          <Property Name="CloseDateExplanation" Type="nvarchar" MaxLength="4000" />
+          <Property Name="ExpectedNumberOfAwards" Type="nvarchar" MaxLength="20" />
+          <Property Name="EstimatedTotalProgramFunding" Type="nvarchar" MaxLength="20" />
+          <Property Name="AwardCeiling" Type="nvarchar" MaxLength="20" />
+          <Property Name="AwardFloor" Type="nvarchar" MaxLength="20" />
+          <Property Name="LastUpdatedDate" Type="datetime2" Precision="7" />
+          <Property Name="EstimatedSynopsisPostDate" Type="nvarchar" MaxLength="8" />
+          <Property Name="FiscalYear" Type="nvarchar" MaxLength="4" />
+          <Property Name="EstimatedSynopsisCloseDate" Type="nvarchar" MaxLength="8" />
+          <Property Name="EstimatedSynopsisCloseDateExplanation" Type="nvarchar" MaxLength="300" />
+          <Property Name="EstimatedAwardDate" Type="nvarchar" MaxLength="8" />
+          <Property Name="EstimatedProjectStartDate" Type="nvarchar" MaxLength="8" />
+          <Property Name="ArchiveDate" Type="datetime2" Precision="7" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="CostSharingOrMatchingRequirement" Type="nvarchar" MaxLength="4" />
+          <Property Name="AdditionalInformationText" Type="nvarchar" MaxLength="300" />
+          <Property Name="AdditionalInformationURL" Type="nvarchar" MaxLength="300" />
+          <Property Name="GrantorContactText" Type="nvarchar" MaxLength="2500" />
+          <Property Name="GrantorContactEmailDescription" Type="nvarchar" MaxLength="300" />
+          <Property Name="GrantorContactEmail" Type="nvarchar" MaxLength="300" />
+          <Property Name="GrantorContactName" Type="nvarchar" MaxLength="2500" />
+          <Property Name="GrantorContactPhoneNumber" Type="nvarchar" MaxLength="100" />
+          <Property Name="Version" Type="nchar" MaxLength="10" />
+          <Property Name="InsertedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BusinessIncentives.dbo.ProgramView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ProgramView">
+          <Key>
+            <PropertyRef Name="DeadlineDefined" />
+            <PropertyRef Name="ProgramNumber" />
+            <PropertyRef Name="InsertedDate" />
+            <PropertyRef Name="UpdatedDate" />
+          </Key>
+          <Property Name="DeadlineDefined" Type="int" Nullable="false" />
+          <Property Name="ExtractedDeadline" Type="date" />
+          <Property Name="ProgramNumber" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="ProgramTitle" Type="nvarchar" MaxLength="800" />
+          <Property Name="PopularName_020" Type="nvarchar(max)" />
+          <Property Name="FederalAgency_030" Type="nvarchar" MaxLength="500" />
+          <Property Name="Authorization_040" Type="nvarchar(max)" />
+          <Property Name="Objectives_050" Type="nvarchar(max)" />
+          <Property Name="TypesOfAssistance_060" Type="nvarchar" MaxLength="4000" />
+          <Property Name="UsesAndUseRestrictions_070" Type="nvarchar(max)" />
+          <Property Name="ApplicantEligibility_081" Type="nvarchar(max)" />
+          <Property Name="BeneficiaryEligibility_082" Type="nvarchar(max)" />
+          <Property Name="CredentialsDocumentation_083" Type="nvarchar(max)" />
+          <Property Name="PreapplicationCoordination_091" Type="nvarchar(max)" />
+          <Property Name="ApplicationProcedures_092" Type="nvarchar(max)" />
+          <Property Name="AwardProcedure_093" Type="nvarchar(max)" />
+          <Property Name="Deadlines_094" Type="nvarchar(max)" />
+          <Property Name="RangeOfApprovalDisapprovalTime_095" Type="nvarchar(max)" />
+          <Property Name="Appeals_096" Type="nvarchar(max)" />
+          <Property Name="Renewals_097" Type="nvarchar(max)" />
+          <Property Name="FormulaAndMatchingRequirements_101" Type="nvarchar(max)" />
+          <Property Name="LengthAndTimePhasingOfAssistance_102" Type="nvarchar(max)" />
+          <Property Name="Reports_111" Type="nvarchar(max)" />
+          <Property Name="Audits_112" Type="nvarchar(max)" />
+          <Property Name="Records_113" Type="nvarchar(max)" />
+          <Property Name="AccountIdentification_121" Type="nvarchar" MaxLength="3000" />
+          <Property Name="Obligations_122" Type="nvarchar(max)" />
+          <Property Name="RangeAndAverageOfFinancialAssistance_123" Type="nvarchar(max)" />
+          <Property Name="ProgramAccomplishments_130" Type="nvarchar(max)" />
+          <Property Name="RegulationsGuidelinesAndLiterature_140" Type="nvarchar(max)" />
+          <Property Name="RegionalOrLocalOffice_151" Type="nvarchar(max)" />
+          <Property Name="HeadquartersOffice_152" Type="nvarchar(max)" />
+          <Property Name="WebsiteAddress_153" Type="nvarchar" MaxLength="800" />
+          <Property Name="RelatedPrograms_160" Type="nvarchar" MaxLength="4000" />
+          <Property Name="ExamplesOfFundedProjects_170" Type="nvarchar(max)" />
+          <Property Name="CriteriaForSelectingProposals_180" Type="nvarchar(max)" />
+          <Property Name="PublishedDate" Type="nvarchar" MaxLength="100" />
+          <Property Name="ParentShortname" Type="nvarchar" MaxLength="200" />
+          <Property Name="URL" Type="nvarchar" MaxLength="300" />
+          <Property Name="Recovery" Type="nvarchar" MaxLength="25" />
+          <Property Name="InsertedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CustomOpportunity_AssistanceType">
+          <End Role="AssistanceType" Type="Self.AssistanceType" Multiplicity="0..1" />
+          <End Role="CustomOpportunity" Type="Self.CustomOpportunity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssistanceType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomOpportunity">
+              <PropertyRef Name="AssistanceTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomOpportunity_FundingLevel">
+          <End Role="FundingLevel" Type="Self.FundingLevel" Multiplicity="0..1" />
+          <End Role="CustomOpportunity" Type="Self.CustomOpportunity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FundingLevel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomOpportunity">
+              <PropertyRef Name="FundingLevelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FieldCodedValues_FieldCodedValueOrigin">
+          <End Role="FieldCodedValueOrigin" Type="Self.FieldCodedValueOrigin" Multiplicity="1" />
+          <End Role="FieldCodedValue" Type="Self.FieldCodedValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FieldCodedValueOrigin">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FieldCodedValue">
+              <PropertyRef Name="OriginID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OpportunityProgramXRef_Opportunity">
+          <End Role="Opportunity" Type="Self.Opportunity" Multiplicity="1" />
+          <End Role="OpportunityProgramXRef" Type="Self.OpportunityProgramXRef" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Opportunity">
+              <PropertyRef Name="OpportunityID" />
+            </Principal>
+            <Dependent Role="OpportunityProgramXRef">
+              <PropertyRef Name="OpportunityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OpportunityProgramXRef_Program">
+          <End Role="Program" Type="Self.Program" Multiplicity="1" />
+          <End Role="OpportunityProgramXRef" Type="Self.OpportunityProgramXRef" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="ProgramNumber" />
+            </Principal>
+            <Dependent Role="OpportunityProgramXRef">
+              <PropertyRef Name="ProgramNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_User">
+          <End Role="PermissionLevel" Type="Self.PermissionLevel" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PermissionLevel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="PermissionLevelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserCustomOpportunityXRef_CustomOpportunity">
+          <End Role="CustomOpportunity" Type="Self.CustomOpportunity" Multiplicity="1" />
+          <End Role="UserCustomOpportunityXRef" Type="Self.UserCustomOpportunityXRef" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomOpportunity">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserCustomOpportunityXRef">
+              <PropertyRef Name="CustomOpportunityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserCustomOpportunityXRef_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserCustomOpportunityXRef" Type="Self.UserCustomOpportunityXRef" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserCustomOpportunityXRef">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserOpportunityXRef_Opportunity">
+          <End Role="Opportunity" Type="Self.Opportunity" Multiplicity="1" />
+          <End Role="UserOpportunityXRef" Type="Self.UserOpportunityXRef" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Opportunity">
+              <PropertyRef Name="OpportunityID" />
+            </Principal>
+            <Dependent Role="UserOpportunityXRef">
+              <PropertyRef Name="OpportunityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserOpportunityXRef_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserOpportunityXRef" Type="Self.UserOpportunityXRef" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserOpportunityXRef">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProgramXRef_Program">
+          <End Role="Program" Type="Self.Program" Multiplicity="1" />
+          <End Role="UserProgramXRef" Type="Self.UserProgramXRef" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="ProgramNumber" />
+            </Principal>
+            <Dependent Role="UserProgramXRef">
+              <PropertyRef Name="ProgramNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProgramXRef_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserProgramXRef" Type="Self.UserProgramXRef" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserProgramXRef">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BusinessIncentivesModelStoreContainer">
+          <EntitySet Name="AssistanceType" EntityType="Self.AssistanceType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ColoradoBusiness" EntityType="Self.ColoradoBusiness" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomOpportunity" EntityType="Self.CustomOpportunity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FieldCodedValue" EntityType="Self.FieldCodedValue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FieldCodedValueOrigin" EntityType="Self.FieldCodedValueOrigin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FundingLevel" EntityType="Self.FundingLevel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Opportunity" EntityType="Self.Opportunity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OpportunityProgramXRef" EntityType="Self.OpportunityProgramXRef" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PermissionLevel" EntityType="Self.PermissionLevel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Program" EntityType="Self.Program" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserCustomOpportunityXRef" EntityType="Self.UserCustomOpportunityXRef" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserOpportunityXRef" EntityType="Self.UserOpportunityXRef" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserProgramXRef" EntityType="Self.UserProgramXRef" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserSavedSearch" EntityType="Self.UserSavedSearch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OpportunityView" EntityType="Self.OpportunityView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OpportunityView].[OpportunityID] AS [OpportunityID], 
+    [OpportunityView].[OpportunityTitle] AS [OpportunityTitle], 
+    [OpportunityView].[OpportunityNumber] AS [OpportunityNumber], 
+    [OpportunityView].[OpportunityCategory] AS [OpportunityCategory], 
+    [OpportunityView].[OpportunityCategoryExplanation] AS [OpportunityCategoryExplanation], 
+    [OpportunityView].[FundingInstrumentType] AS [FundingInstrumentType], 
+    [OpportunityView].[CategoryOfFundingActivity] AS [CategoryOfFundingActivity], 
+    [OpportunityView].[CategoryExplanation] AS [CategoryExplanation], 
+    [OpportunityView].[CFDANumbers] AS [CFDANumbers], 
+    [OpportunityView].[EligibleApplicants] AS [EligibleApplicants], 
+    [OpportunityView].[AdditionalInformationOnEligibility] AS [AdditionalInformationOnEligibility], 
+    [OpportunityView].[AgencyCode] AS [AgencyCode], 
+    [OpportunityView].[AgencyName] AS [AgencyName], 
+    [OpportunityView].[PostDate] AS [PostDate], 
+    [OpportunityView].[CloseDate] AS [CloseDate], 
+    [OpportunityView].[CloseDateExplanation] AS [CloseDateExplanation], 
+    [OpportunityView].[ExpectedNumberOfAwards] AS [ExpectedNumberOfAwards], 
+    [OpportunityView].[EstimatedTotalProgramFunding] AS [EstimatedTotalProgramFunding], 
+    [OpportunityView].[AwardCeiling] AS [AwardCeiling], 
+    [OpportunityView].[AwardFloor] AS [AwardFloor], 
+    [OpportunityView].[LastUpdatedDate] AS [LastUpdatedDate], 
+    [OpportunityView].[EstimatedSynopsisPostDate] AS [EstimatedSynopsisPostDate], 
+    [OpportunityView].[FiscalYear] AS [FiscalYear], 
+    [OpportunityView].[EstimatedSynopsisCloseDate] AS [EstimatedSynopsisCloseDate], 
+    [OpportunityView].[EstimatedSynopsisCloseDateExplanation] AS [EstimatedSynopsisCloseDateExplanation], 
+    [OpportunityView].[EstimatedAwardDate] AS [EstimatedAwardDate], 
+    [OpportunityView].[EstimatedProjectStartDate] AS [EstimatedProjectStartDate], 
+    [OpportunityView].[ArchiveDate] AS [ArchiveDate], 
+    [OpportunityView].[Description] AS [Description], 
+    [OpportunityView].[CostSharingOrMatchingRequirement] AS [CostSharingOrMatchingRequirement], 
+    [OpportunityView].[AdditionalInformationText] AS [AdditionalInformationText], 
+    [OpportunityView].[AdditionalInformationURL] AS [AdditionalInformationURL], 
+    [OpportunityView].[GrantorContactText] AS [GrantorContactText], 
+    [OpportunityView].[GrantorContactEmailDescription] AS [GrantorContactEmailDescription], 
+    [OpportunityView].[GrantorContactEmail] AS [GrantorContactEmail], 
+    [OpportunityView].[GrantorContactName] AS [GrantorContactName], 
+    [OpportunityView].[GrantorContactPhoneNumber] AS [GrantorContactPhoneNumber], 
+    [OpportunityView].[Version] AS [Version], 
+    [OpportunityView].[InsertedDate] AS [InsertedDate], 
+    [OpportunityView].[UpdatedDate] AS [UpdatedDate]
+    FROM [dbo].[OpportunityView] AS [OpportunityView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ProgramView" EntityType="Self.ProgramView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ProgramView].[DeadlineDefined] AS [DeadlineDefined], 
+    [ProgramView].[ExtractedDeadline] AS [ExtractedDeadline], 
+    [ProgramView].[ProgramNumber] AS [ProgramNumber], 
+    [ProgramView].[ProgramTitle] AS [ProgramTitle], 
+    [ProgramView].[PopularName_020] AS [PopularName_020], 
+    [ProgramView].[FederalAgency_030] AS [FederalAgency_030], 
+    [ProgramView].[Authorization_040] AS [Authorization_040], 
+    [ProgramView].[Objectives_050] AS [Objectives_050], 
+    [ProgramView].[TypesOfAssistance_060] AS [TypesOfAssistance_060], 
+    [ProgramView].[UsesAndUseRestrictions_070] AS [UsesAndUseRestrictions_070], 
+    [ProgramView].[ApplicantEligibility_081] AS [ApplicantEligibility_081], 
+    [ProgramView].[BeneficiaryEligibility_082] AS [BeneficiaryEligibility_082], 
+    [ProgramView].[CredentialsDocumentation_083] AS [CredentialsDocumentation_083], 
+    [ProgramView].[PreapplicationCoordination_091] AS [PreapplicationCoordination_091], 
+    [ProgramView].[ApplicationProcedures_092] AS [ApplicationProcedures_092], 
+    [ProgramView].[AwardProcedure_093] AS [AwardProcedure_093], 
+    [ProgramView].[Deadlines_094] AS [Deadlines_094], 
+    [ProgramView].[RangeOfApprovalDisapprovalTime_095] AS [RangeOfApprovalDisapprovalTime_095], 
+    [ProgramView].[Appeals_096] AS [Appeals_096], 
+    [ProgramView].[Renewals_097] AS [Renewals_097], 
+    [ProgramView].[FormulaAndMatchingRequirements_101] AS [FormulaAndMatchingRequirements_101], 
+    [ProgramView].[LengthAndTimePhasingOfAssistance_102] AS [LengthAndTimePhasingOfAssistance_102], 
+    [ProgramView].[Reports_111] AS [Reports_111], 
+    [ProgramView].[Audits_112] AS [Audits_112], 
+    [ProgramView].[Records_113] AS [Records_113], 
+    [ProgramView].[AccountIdentification_121] AS [AccountIdentification_121], 
+    [ProgramView].[Obligations_122] AS [Obligations_122], 
+    [ProgramView].[RangeAndAverageOfFinancialAssistance_123] AS [RangeAndAverageOfFinancialAssistance_123], 
+    [ProgramView].[ProgramAccomplishments_130] AS [ProgramAccomplishments_130], 
+    [ProgramView].[RegulationsGuidelinesAndLiterature_140] AS [RegulationsGuidelinesAndLiterature_140], 
+    [ProgramView].[RegionalOrLocalOffice_151] AS [RegionalOrLocalOffice_151], 
+    [ProgramView].[HeadquartersOffice_152] AS [HeadquartersOffice_152], 
+    [ProgramView].[WebsiteAddress_153] AS [WebsiteAddress_153], 
+    [ProgramView].[RelatedPrograms_160] AS [RelatedPrograms_160], 
+    [ProgramView].[ExamplesOfFundedProjects_170] AS [ExamplesOfFundedProjects_170], 
+    [ProgramView].[CriteriaForSelectingProposals_180] AS [CriteriaForSelectingProposals_180], 
+    [ProgramView].[PublishedDate] AS [PublishedDate], 
+    [ProgramView].[ParentShortname] AS [ParentShortname], 
+    [ProgramView].[URL] AS [URL], 
+    [ProgramView].[Recovery] AS [Recovery], 
+    [ProgramView].[InsertedDate] AS [InsertedDate], 
+    [ProgramView].[UpdatedDate] AS [UpdatedDate]
+    FROM [dbo].[ProgramView] AS [ProgramView]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_CustomOpportunity_AssistanceType" Association="Self.FK_CustomOpportunity_AssistanceType">
+            <End Role="AssistanceType" EntitySet="AssistanceType" />
+            <End Role="CustomOpportunity" EntitySet="CustomOpportunity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomOpportunity_FundingLevel" Association="Self.FK_CustomOpportunity_FundingLevel">
+            <End Role="FundingLevel" EntitySet="FundingLevel" />
+            <End Role="CustomOpportunity" EntitySet="CustomOpportunity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FieldCodedValues_FieldCodedValueOrigin" Association="Self.FK_FieldCodedValues_FieldCodedValueOrigin">
+            <End Role="FieldCodedValueOrigin" EntitySet="FieldCodedValueOrigin" />
+            <End Role="FieldCodedValue" EntitySet="FieldCodedValue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OpportunityProgramXRef_Opportunity" Association="Self.FK_OpportunityProgramXRef_Opportunity">
+            <End Role="Opportunity" EntitySet="Opportunity" />
+            <End Role="OpportunityProgramXRef" EntitySet="OpportunityProgramXRef" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OpportunityProgramXRef_Program" Association="Self.FK_OpportunityProgramXRef_Program">
+            <End Role="Program" EntitySet="Program" />
+            <End Role="OpportunityProgramXRef" EntitySet="OpportunityProgramXRef" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_User" Association="Self.FK_User_User">
+            <End Role="PermissionLevel" EntitySet="PermissionLevel" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserCustomOpportunityXRef_CustomOpportunity" Association="Self.FK_UserCustomOpportunityXRef_CustomOpportunity">
+            <End Role="CustomOpportunity" EntitySet="CustomOpportunity" />
+            <End Role="UserCustomOpportunityXRef" EntitySet="UserCustomOpportunityXRef" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserCustomOpportunityXRef_User" Association="Self.FK_UserCustomOpportunityXRef_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserCustomOpportunityXRef" EntitySet="UserCustomOpportunityXRef" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserOpportunityXRef_Opportunity" Association="Self.FK_UserOpportunityXRef_Opportunity">
+            <End Role="Opportunity" EntitySet="Opportunity" />
+            <End Role="UserOpportunityXRef" EntitySet="UserOpportunityXRef" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserOpportunityXRef_User" Association="Self.FK_UserOpportunityXRef_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserOpportunityXRef" EntitySet="UserOpportunityXRef" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProgramXRef_Program" Association="Self.FK_UserProgramXRef_Program">
+            <End Role="Program" EntitySet="Program" />
+            <End Role="UserProgramXRef" EntitySet="UserProgramXRef" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProgramXRef_User" Association="Self.FK_UserProgramXRef_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserProgramXRef" EntitySet="UserProgramXRef" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BusinessIncentivesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BusinessIncentivesContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Programs" EntityType="BusinessIncentivesModel.Program" />
+          <EntitySet Name="ProgramViews" EntityType="BusinessIncentivesModel.ProgramView" />
+          <EntitySet Name="Opportunities" EntityType="BusinessIncentivesModel.Opportunity" />
+          <EntitySet Name="PermissionLevels" EntityType="BusinessIncentivesModel.PermissionLevel" />
+          <AssociationSet Name="OpportunityProgramXRef" Association="BusinessIncentivesModel.OpportunityProgramXRef">
+            <End Role="Opportunity" EntitySet="Opportunities" />
+            <End Role="Program" EntitySet="Programs" />
+          </AssociationSet>
+          <EntitySet Name="Users" EntityType="BusinessIncentivesModel.User" />
+          <AssociationSet Name="FK_User_User" Association="BusinessIncentivesModel.FK_User_User">
+            <End Role="PermissionLevel" EntitySet="PermissionLevels" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="UserOpportunityXRef" Association="BusinessIncentivesModel.UserOpportunityXRef">
+            <End Role="Opportunity" EntitySet="Opportunities" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="UserProgramXRef" Association="BusinessIncentivesModel.UserProgramXRef">
+            <End Role="Program" EntitySet="Programs" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <EntitySet Name="FundingLevels" EntityType="BusinessIncentivesModel.FundingLevel" />
+          <EntitySet Name="FieldCodedValues" EntityType="BusinessIncentivesModel.FieldCodedValue" />
+          <EntitySet Name="FieldCodedValueOrigins" EntityType="BusinessIncentivesModel.FieldCodedValueOrigin" />
+          <AssociationSet Name="FK_FieldCodedValues_FieldCodedValueOrigin" Association="BusinessIncentivesModel.FK_FieldCodedValues_FieldCodedValueOrigin">
+            <End Role="FieldCodedValueOrigin" EntitySet="FieldCodedValueOrigins" />
+            <End Role="FieldCodedValue" EntitySet="FieldCodedValues" />
+          </AssociationSet>
+          <EntitySet Name="ColoradoBusinesses" EntityType="BusinessIncentivesModel.ColoradoBusiness" />
+          <EntitySet Name="AssistanceTypes" EntityType="BusinessIncentivesModel.AssistanceType" />
+          <EntitySet Name="CustomOpportunities" EntityType="BusinessIncentivesModel.CustomOpportunity" />
+          <EntitySet Name="UserSavedSearches" EntityType="BusinessIncentivesModel.UserSavedSearch" />
+          <AssociationSet Name="FK_CustomOpportunity_AssistanceType" Association="BusinessIncentivesModel.FK_CustomOpportunity_AssistanceType">
+            <End Role="AssistanceType" EntitySet="AssistanceTypes" />
+            <End Role="CustomOpportunity" EntitySet="CustomOpportunities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomOpportunity_FundingLevel" Association="BusinessIncentivesModel.FK_CustomOpportunity_FundingLevel">
+            <End Role="FundingLevel" EntitySet="FundingLevels" />
+            <End Role="CustomOpportunity" EntitySet="CustomOpportunities" />
+          </AssociationSet>
+          <AssociationSet Name="UserCustomOpportunityXRef" Association="BusinessIncentivesModel.UserCustomOpportunityXRef">
+            <End Role="CustomOpportunity" EntitySet="CustomOpportunities" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <EntitySet Name="OpportunityViews" EntityType="BusinessIncentivesModel.OpportunityView" />
+          </EntityContainer>
+        <EntityType Name="Program">
+          <Key>
+            <PropertyRef Name="ProgramNumber" />
+          </Key>
+          <Property Name="ProgramNumber" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="ProgramTitle" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+          <Property Name="PopularName_020" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FederalAgency_030" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Authorization_040" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Objectives_050" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TypesOfAssistance_060" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="UsesAndUseRestrictions_070" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicantEligibility_081" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BeneficiaryEligibility_082" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CredentialsDocumentation_083" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PreapplicationCoordination_091" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicationProcedures_092" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AwardProcedure_093" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Deadlines_094" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RangeOfApprovalDisapprovalTime_095" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Appeals_096" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Renewals_097" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FormulaAndMatchingRequirements_101" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LengthAndTimePhasingOfAssistance_102" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Reports_111" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Audits_112" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Records_113" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AccountIdentification_121" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+          <Property Name="Obligations_122" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RangeAndAverageOfFinancialAssistance_123" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProgramAccomplishments_130" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RegulationsGuidelinesAndLiterature_140" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RegionalOrLocalOffice_151" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HeadquartersOffice_152" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WebsiteAddress_153" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+          <Property Name="RelatedPrograms_160" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="ExamplesOfFundedProjects_170" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CriteriaForSelectingProposals_180" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PublishedDate" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ParentShortname" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="URL" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Recovery" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="InsertedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Opportunities" Relationship="BusinessIncentivesModel.OpportunityProgramXRef" FromRole="Program" ToRole="Opportunity" />
+          <NavigationProperty Name="Users" Relationship="BusinessIncentivesModel.UserProgramXRef" FromRole="Program" ToRole="User" />
+        </EntityType>
+        <EntityType Name="ProgramView">
+          <Key>
+            <PropertyRef Name="DeadlineDefined" />
+            <PropertyRef Name="ProgramNumber" />
+            <PropertyRef Name="InsertedDate" />
+            <PropertyRef Name="UpdatedDate" />
+          </Key>
+          <Property Name="DeadlineDefined" Type="Int32" Nullable="false" />
+          <Property Name="ExtractedDeadline" Type="DateTime" Precision="0" />
+          <Property Name="ProgramNumber" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="ProgramTitle" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+          <Property Name="PopularName_020" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FederalAgency_030" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Authorization_040" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Objectives_050" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TypesOfAssistance_060" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="UsesAndUseRestrictions_070" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicantEligibility_081" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BeneficiaryEligibility_082" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CredentialsDocumentation_083" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PreapplicationCoordination_091" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicationProcedures_092" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AwardProcedure_093" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Deadlines_094" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RangeOfApprovalDisapprovalTime_095" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Appeals_096" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Renewals_097" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FormulaAndMatchingRequirements_101" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LengthAndTimePhasingOfAssistance_102" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Reports_111" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Audits_112" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Records_113" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AccountIdentification_121" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+          <Property Name="Obligations_122" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RangeAndAverageOfFinancialAssistance_123" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProgramAccomplishments_130" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RegulationsGuidelinesAndLiterature_140" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RegionalOrLocalOffice_151" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HeadquartersOffice_152" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WebsiteAddress_153" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+          <Property Name="RelatedPrograms_160" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="ExamplesOfFundedProjects_170" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CriteriaForSelectingProposals_180" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PublishedDate" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ParentShortname" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="URL" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Recovery" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="InsertedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="7" />
+        </EntityType>
+        <EntityType Name="Opportunity">
+          <Key>
+            <PropertyRef Name="OpportunityID" />
+          </Key>
+          <Property Name="OpportunityID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="OpportunityTitle" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="OpportunityNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OpportunityCategory" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="OpportunityCategoryExplanation" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="FundingInstrumentType" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryOfFundingActivity" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryExplanation" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="CFDANumbers" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="EligibleApplicants" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="AdditionalInformationOnEligibility" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="AgencyCode" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="AgencyName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="PostDate" Type="DateTime" Precision="7" />
+          <Property Name="CloseDate" Type="DateTime" Precision="7" />
+          <Property Name="CloseDateExplanation" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="ExpectedNumberOfAwards" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="EstimatedTotalProgramFunding" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AwardCeiling" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AwardFloor" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Precision="7" />
+          <Property Name="EstimatedSynopsisPostDate" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="FiscalYear" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="EstimatedSynopsisCloseDate" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="EstimatedSynopsisCloseDateExplanation" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="EstimatedAwardDate" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="EstimatedProjectStartDate" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="ArchiveDate" Type="DateTime" Precision="7" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CostSharingOrMatchingRequirement" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="AdditionalInformationText" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="AdditionalInformationURL" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="GrantorContactText" Type="String" MaxLength="2500" FixedLength="false" Unicode="true" />
+          <Property Name="GrantorContactEmailDescription" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="GrantorContactEmail" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="GrantorContactName" Type="String" MaxLength="2500" FixedLength="false" Unicode="true" />
+          <Property Name="GrantorContactPhoneNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Version" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="InsertedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Programs" Relationship="BusinessIncentivesModel.OpportunityProgramXRef" FromRole="Opportunity" ToRole="Program" />
+          <NavigationProperty Name="Users" Relationship="BusinessIncentivesModel.UserOpportunityXRef" FromRole="Opportunity" ToRole="User" />
+        </EntityType>
+        <EntityType Name="PermissionLevel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int16" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="BusinessIncentivesModel.FK_User_User" FromRole="PermissionLevel" ToRole="User" />
+        </EntityType>
+        <Association Name="OpportunityProgramXRef">
+          <End Type="BusinessIncentivesModel.Opportunity" Role="Opportunity" Multiplicity="*" />
+          <End Type="BusinessIncentivesModel.Program" Role="Program" Multiplicity="*" />
+        </Association>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="Salt" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PermissionLevelID" Type="Int16" />
+          <Property Name="InsertedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="PermissionLevel" Relationship="BusinessIncentivesModel.FK_User_User" FromRole="User" ToRole="PermissionLevel" />
+          <NavigationProperty Name="Opportunities" Relationship="BusinessIncentivesModel.UserOpportunityXRef" FromRole="User" ToRole="Opportunity" />
+          <NavigationProperty Name="Programs" Relationship="BusinessIncentivesModel.UserProgramXRef" FromRole="User" ToRole="Program" />
+          <NavigationProperty Name="CustomOpportunities" Relationship="BusinessIncentivesModel.UserCustomOpportunityXRef" FromRole="User" ToRole="CustomOpportunity" />
+        </EntityType>
+        <Association Name="FK_User_User">
+          <End Type="BusinessIncentivesModel.PermissionLevel" Role="PermissionLevel" Multiplicity="0..1" />
+          <End Type="BusinessIncentivesModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PermissionLevel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="PermissionLevelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserOpportunityXRef">
+          <End Type="BusinessIncentivesModel.Opportunity" Role="Opportunity" Multiplicity="*" />
+          <End Type="BusinessIncentivesModel.User" Role="User" Multiplicity="*" />
+        </Association>
+        <Association Name="UserProgramXRef">
+          <End Type="BusinessIncentivesModel.Program" Role="Program" Multiplicity="*" />
+          <End Type="BusinessIncentivesModel.User" Role="User" Multiplicity="*" />
+        </Association>
+        <EntityType Name="FundingLevel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int16" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CustomOpportunities" Relationship="BusinessIncentivesModel.FK_CustomOpportunity_FundingLevel" FromRole="FundingLevel" ToRole="CustomOpportunity" />
+        </EntityType>
+        <EntityType Name="FieldCodedValue">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OriginID" Type="Int32" Nullable="false" />
+          <Property Name="FieldName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="InsertedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="FieldCodedValueOrigin" Relationship="BusinessIncentivesModel.FK_FieldCodedValues_FieldCodedValueOrigin" FromRole="FieldCodedValue" ToRole="FieldCodedValueOrigin" />
+        </EntityType>
+        <EntityType Name="FieldCodedValueOrigin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="InsertedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="FieldCodedValues" Relationship="BusinessIncentivesModel.FK_FieldCodedValues_FieldCodedValueOrigin" FromRole="FieldCodedValueOrigin" ToRole="FieldCodedValue" />
+        </EntityType>
+        <Association Name="FK_FieldCodedValues_FieldCodedValueOrigin">
+          <End Type="BusinessIncentivesModel.FieldCodedValueOrigin" Role="FieldCodedValueOrigin" Multiplicity="1" />
+          <End Type="BusinessIncentivesModel.FieldCodedValue" Role="FieldCodedValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FieldCodedValueOrigin">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FieldCodedValue">
+              <PropertyRef Name="OriginID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ColoradoBusiness">
+          <Key>
+            <PropertyRef Name="EntityId" />
+          </Key>
+          <Property Name="EntityId" Type="Int64" Nullable="false" />
+          <Property Name="EntityName" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="PrincipalAddress1" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="PrincipalAddress2" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="PrincipalCity" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="PrincipalState" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="PrincipalZipCode" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="PrincipalCountry" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="EntityStatus" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="JurisdictionOfFormation" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="EntityType" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="EntityFormDate" Type="DateTime" Precision="7" />
+          <Property Name="InsertedDate" Type="DateTime" Precision="7" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="7" />
+        </EntityType>
+        <EntityType Name="AssistanceType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CustomOpportunities" Relationship="BusinessIncentivesModel.FK_CustomOpportunity_AssistanceType" FromRole="AssistanceType" ToRole="CustomOpportunity" />
+        </EntityType>
+        <EntityType Name="CustomOpportunity">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Summary" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FundingLevelID" Type="Int16" />
+          <Property Name="FundingLevelDetails" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="AssistanceTypeID" Type="Int32" />
+          <Property Name="OpeningDate" Type="DateTime" Precision="7" />
+          <Property Name="ClosingDate" Type="DateTime" Precision="7" />
+          <Property Name="WebLink" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="EligibilityKeywords" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="Origin" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="InsertedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="AssistanceType" Relationship="BusinessIncentivesModel.FK_CustomOpportunity_AssistanceType" FromRole="CustomOpportunity" ToRole="AssistanceType" />
+          <NavigationProperty Name="FundingLevel" Relationship="BusinessIncentivesModel.FK_CustomOpportunity_FundingLevel" FromRole="CustomOpportunity" ToRole="FundingLevel" />
+          <NavigationProperty Name="Users" Relationship="BusinessIncentivesModel.UserCustomOpportunityXRef" FromRole="CustomOpportunity" ToRole="User" />
+        </EntityType>
+        <EntityType Name="UserSavedSearch">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="SearchJsonData" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_CustomOpportunity_AssistanceType">
+          <End Type="BusinessIncentivesModel.AssistanceType" Role="AssistanceType" Multiplicity="0..1" />
+          <End Type="BusinessIncentivesModel.CustomOpportunity" Role="CustomOpportunity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssistanceType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomOpportunity">
+              <PropertyRef Name="AssistanceTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomOpportunity_FundingLevel">
+          <End Type="BusinessIncentivesModel.FundingLevel" Role="FundingLevel" Multiplicity="0..1" />
+          <End Type="BusinessIncentivesModel.CustomOpportunity" Role="CustomOpportunity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FundingLevel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomOpportunity">
+              <PropertyRef Name="FundingLevelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserCustomOpportunityXRef">
+          <End Type="BusinessIncentivesModel.CustomOpportunity" Role="CustomOpportunity" Multiplicity="*" />
+          <End Type="BusinessIncentivesModel.User" Role="User" Multiplicity="*" />
+        </Association>
+        <EntityType Name="OpportunityView">
+          <Key>
+            <PropertyRef Name="OpportunityID" />
+            <PropertyRef Name="InsertedDate" />
+            <PropertyRef Name="UpdatedDate" />
+          </Key>
+          <Property Name="OpportunityID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="OpportunityTitle" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="OpportunityNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OpportunityCategory" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="OpportunityCategoryExplanation" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="FundingInstrumentType" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryOfFundingActivity" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryExplanation" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="CFDANumbers" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="EligibleApplicants" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="AdditionalInformationOnEligibility" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="AgencyCode" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="AgencyName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="PostDate" Type="DateTime" Precision="7" />
+          <Property Name="CloseDate" Type="DateTime" Precision="7" />
+          <Property Name="CloseDateExplanation" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="ExpectedNumberOfAwards" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="EstimatedTotalProgramFunding" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AwardCeiling" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AwardFloor" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Precision="7" />
+          <Property Name="EstimatedSynopsisPostDate" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="FiscalYear" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="EstimatedSynopsisCloseDate" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="EstimatedSynopsisCloseDateExplanation" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="EstimatedAwardDate" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="EstimatedProjectStartDate" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="ArchiveDate" Type="DateTime" Precision="7" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CostSharingOrMatchingRequirement" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="AdditionalInformationText" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="AdditionalInformationURL" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="GrantorContactText" Type="String" MaxLength="2500" FixedLength="false" Unicode="true" />
+          <Property Name="GrantorContactEmailDescription" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="GrantorContactEmail" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="GrantorContactName" Type="String" MaxLength="2500" FixedLength="false" Unicode="true" />
+          <Property Name="GrantorContactPhoneNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Version" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="InsertedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="7" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BusinessIncentivesModelStoreContainer" CdmEntityContainer="BusinessIncentivesContext">
+          <EntitySetMapping Name="Programs">
+            <EntityTypeMapping TypeName="BusinessIncentivesModel.Program">
+              <MappingFragment StoreEntitySet="Program">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="Recovery" ColumnName="Recovery" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="ParentShortname" ColumnName="ParentShortname" />
+                <ScalarProperty Name="PublishedDate" ColumnName="PublishedDate" />
+                <ScalarProperty Name="CriteriaForSelectingProposals_180" ColumnName="CriteriaForSelectingProposals_180" />
+                <ScalarProperty Name="ExamplesOfFundedProjects_170" ColumnName="ExamplesOfFundedProjects_170" />
+                <ScalarProperty Name="RelatedPrograms_160" ColumnName="RelatedPrograms_160" />
+                <ScalarProperty Name="WebsiteAddress_153" ColumnName="WebsiteAddress_153" />
+                <ScalarProperty Name="HeadquartersOffice_152" ColumnName="HeadquartersOffice_152" />
+                <ScalarProperty Name="RegionalOrLocalOffice_151" ColumnName="RegionalOrLocalOffice_151" />
+                <ScalarProperty Name="RegulationsGuidelinesAndLiterature_140" ColumnName="RegulationsGuidelinesAndLiterature_140" />
+                <ScalarProperty Name="ProgramAccomplishments_130" ColumnName="ProgramAccomplishments_130" />
+                <ScalarProperty Name="RangeAndAverageOfFinancialAssistance_123" ColumnName="RangeAndAverageOfFinancialAssistance_123" />
+                <ScalarProperty Name="Obligations_122" ColumnName="Obligations_122" />
+                <ScalarProperty Name="AccountIdentification_121" ColumnName="AccountIdentification_121" />
+                <ScalarProperty Name="Records_113" ColumnName="Records_113" />
+                <ScalarProperty Name="Audits_112" ColumnName="Audits_112" />
+                <ScalarProperty Name="Reports_111" ColumnName="Reports_111" />
+                <ScalarProperty Name="LengthAndTimePhasingOfAssistance_102" ColumnName="LengthAndTimePhasingOfAssistance_102" />
+                <ScalarProperty Name="FormulaAndMatchingRequirements_101" ColumnName="FormulaAndMatchingRequirements_101" />
+                <ScalarProperty Name="Renewals_097" ColumnName="Renewals_097" />
+                <ScalarProperty Name="Appeals_096" ColumnName="Appeals_096" />
+                <ScalarProperty Name="RangeOfApprovalDisapprovalTime_095" ColumnName="RangeOfApprovalDisapprovalTime_095" />
+                <ScalarProperty Name="Deadlines_094" ColumnName="Deadlines_094" />
+                <ScalarProperty Name="AwardProcedure_093" ColumnName="AwardProcedure_093" />
+                <ScalarProperty Name="ApplicationProcedures_092" ColumnName="ApplicationProcedures_092" />
+                <ScalarProperty Name="PreapplicationCoordination_091" ColumnName="PreapplicationCoordination_091" />
+                <ScalarProperty Name="CredentialsDocumentation_083" ColumnName="CredentialsDocumentation_083" />
+                <ScalarProperty Name="BeneficiaryEligibility_082" ColumnName="BeneficiaryEligibility_082" />
+                <ScalarProperty Name="ApplicantEligibility_081" ColumnName="ApplicantEligibility_081" />
+                <ScalarProperty Name="UsesAndUseRestrictions_070" ColumnName="UsesAndUseRestrictions_070" />
+                <ScalarProperty Name="TypesOfAssistance_060" ColumnName="TypesOfAssistance_060" />
+                <ScalarProperty Name="Objectives_050" ColumnName="Objectives_050" />
+                <ScalarProperty Name="Authorization_040" ColumnName="Authorization_040" />
+                <ScalarProperty Name="FederalAgency_030" ColumnName="FederalAgency_030" />
+                <ScalarProperty Name="PopularName_020" ColumnName="PopularName_020" />
+                <ScalarProperty Name="ProgramTitle" ColumnName="ProgramTitle" />
+                <ScalarProperty Name="ProgramNumber" ColumnName="ProgramNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProgramViews">
+            <EntityTypeMapping TypeName="BusinessIncentivesModel.ProgramView">
+              <MappingFragment StoreEntitySet="ProgramView">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="Recovery" ColumnName="Recovery" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="ParentShortname" ColumnName="ParentShortname" />
+                <ScalarProperty Name="PublishedDate" ColumnName="PublishedDate" />
+                <ScalarProperty Name="CriteriaForSelectingProposals_180" ColumnName="CriteriaForSelectingProposals_180" />
+                <ScalarProperty Name="ExamplesOfFundedProjects_170" ColumnName="ExamplesOfFundedProjects_170" />
+                <ScalarProperty Name="RelatedPrograms_160" ColumnName="RelatedPrograms_160" />
+                <ScalarProperty Name="WebsiteAddress_153" ColumnName="WebsiteAddress_153" />
+                <ScalarProperty Name="HeadquartersOffice_152" ColumnName="HeadquartersOffice_152" />
+                <ScalarProperty Name="RegionalOrLocalOffice_151" ColumnName="RegionalOrLocalOffice_151" />
+                <ScalarProperty Name="RegulationsGuidelinesAndLiterature_140" ColumnName="RegulationsGuidelinesAndLiterature_140" />
+                <ScalarProperty Name="ProgramAccomplishments_130" ColumnName="ProgramAccomplishments_130" />
+                <ScalarProperty Name="RangeAndAverageOfFinancialAssistance_123" ColumnName="RangeAndAverageOfFinancialAssistance_123" />
+                <ScalarProperty Name="Obligations_122" ColumnName="Obligations_122" />
+                <ScalarProperty Name="AccountIdentification_121" ColumnName="AccountIdentification_121" />
+                <ScalarProperty Name="Records_113" ColumnName="Records_113" />
+                <ScalarProperty Name="Audits_112" ColumnName="Audits_112" />
+                <ScalarProperty Name="Reports_111" ColumnName="Reports_111" />
+                <ScalarProperty Name="LengthAndTimePhasingOfAssistance_102" ColumnName="LengthAndTimePhasingOfAssistance_102" />
+                <ScalarProperty Name="FormulaAndMatchingRequirements_101" ColumnName="FormulaAndMatchingRequirements_101" />
+                <ScalarProperty Name="Renewals_097" ColumnName="Renewals_097" />
+                <ScalarProperty Name="Appeals_096" ColumnName="Appeals_096" />
+                <ScalarProperty Name="RangeOfApprovalDisapprovalTime_095" ColumnName="RangeOfApprovalDisapprovalTime_095" />
+                <ScalarProperty Name="Deadlines_094" ColumnName="Deadlines_094" />
+                <ScalarProperty Name="AwardProcedure_093" ColumnName="AwardProcedure_093" />
+                <ScalarProperty Name="ApplicationProcedures_092" ColumnName="ApplicationProcedures_092" />
+                <ScalarProperty Name="PreapplicationCoordination_091" ColumnName="PreapplicationCoordination_091" />
+                <ScalarProperty Name="CredentialsDocumentation_083" ColumnName="CredentialsDocumentation_083" />
+                <ScalarProperty Name="BeneficiaryEligibility_082" ColumnName="BeneficiaryEligibility_082" />
+                <ScalarProperty Name="ApplicantEligibility_081" ColumnName="ApplicantEligibility_081" />
+                <ScalarProperty Name="UsesAndUseRestrictions_070" ColumnName="UsesAndUseRestrictions_070" />
+                <ScalarProperty Name="TypesOfAssistance_060" ColumnName="TypesOfAssistance_060" />
+                <ScalarProperty Name="Objectives_050" ColumnName="Objectives_050" />
+                <ScalarProperty Name="Authorization_040" ColumnName="Authorization_040" />
+                <ScalarProperty Name="FederalAgency_030" ColumnName="FederalAgency_030" />
+                <ScalarProperty Name="PopularName_020" ColumnName="PopularName_020" />
+                <ScalarProperty Name="ProgramTitle" ColumnName="ProgramTitle" />
+                <ScalarProperty Name="ProgramNumber" ColumnName="ProgramNumber" />
+                <ScalarProperty Name="ExtractedDeadline" ColumnName="ExtractedDeadline" />
+                <ScalarProperty Name="DeadlineDefined" ColumnName="DeadlineDefined" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Opportunities">
+            <EntityTypeMapping TypeName="BusinessIncentivesModel.Opportunity">
+              <MappingFragment StoreEntitySet="Opportunity">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="GrantorContactPhoneNumber" ColumnName="GrantorContactPhoneNumber" />
+                <ScalarProperty Name="GrantorContactName" ColumnName="GrantorContactName" />
+                <ScalarProperty Name="GrantorContactEmail" ColumnName="GrantorContactEmail" />
+                <ScalarProperty Name="GrantorContactEmailDescription" ColumnName="GrantorContactEmailDescription" />
+                <ScalarProperty Name="GrantorContactText" ColumnName="GrantorContactText" />
+                <ScalarProperty Name="AdditionalInformationURL" ColumnName="AdditionalInformationURL" />
+                <ScalarProperty Name="AdditionalInformationText" ColumnName="AdditionalInformationText" />
+                <ScalarProperty Name="CostSharingOrMatchingRequirement" ColumnName="CostSharingOrMatchingRequirement" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ArchiveDate" ColumnName="ArchiveDate" />
+                <ScalarProperty Name="EstimatedProjectStartDate" ColumnName="EstimatedProjectStartDate" />
+                <ScalarProperty Name="EstimatedAwardDate" ColumnName="EstimatedAwardDate" />
+                <ScalarProperty Name="EstimatedSynopsisCloseDateExplanation" ColumnName="EstimatedSynopsisCloseDateExplanation" />
+                <ScalarProperty Name="EstimatedSynopsisCloseDate" ColumnName="EstimatedSynopsisCloseDate" />
+                <ScalarProperty Name="FiscalYear" ColumnName="FiscalYear" />
+                <ScalarProperty Name="EstimatedSynopsisPostDate" ColumnName="EstimatedSynopsisPostDate" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="AwardFloor" ColumnName="AwardFloor" />
+                <ScalarProperty Name="AwardCeiling" ColumnName="AwardCeiling" />
+                <ScalarProperty Name="EstimatedTotalProgramFunding" ColumnName="EstimatedTotalProgramFunding" />
+                <ScalarProperty Name="ExpectedNumberOfAwards" ColumnName="ExpectedNumberOfAwards" />
+                <ScalarProperty Name="CloseDateExplanation" ColumnName="CloseDateExplanation" />
+                <ScalarProperty Name="CloseDate" ColumnName="CloseDate" />
+                <ScalarProperty Name="PostDate" ColumnName="PostDate" />
+                <ScalarProperty Name="AgencyName" ColumnName="AgencyName" />
+                <ScalarProperty Name="AgencyCode" ColumnName="AgencyCode" />
+                <ScalarProperty Name="AdditionalInformationOnEligibility" ColumnName="AdditionalInformationOnEligibility" />
+                <ScalarProperty Name="EligibleApplicants" ColumnName="EligibleApplicants" />
+                <ScalarProperty Name="CFDANumbers" ColumnName="CFDANumbers" />
+                <ScalarProperty Name="CategoryExplanation" ColumnName="CategoryExplanation" />
+                <ScalarProperty Name="CategoryOfFundingActivity" ColumnName="CategoryOfFundingActivity" />
+                <ScalarProperty Name="FundingInstrumentType" ColumnName="FundingInstrumentType" />
+                <ScalarProperty Name="OpportunityCategoryExplanation" ColumnName="OpportunityCategoryExplanation" />
+                <ScalarProperty Name="OpportunityCategory" ColumnName="OpportunityCategory" />
+                <ScalarProperty Name="OpportunityNumber" ColumnName="OpportunityNumber" />
+                <ScalarProperty Name="OpportunityTitle" ColumnName="OpportunityTitle" />
+                <ScalarProperty Name="OpportunityID" ColumnName="OpportunityID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PermissionLevels">
+            <EntityTypeMapping TypeName="BusinessIncentivesModel.PermissionLevel">
+              <MappingFragment StoreEntitySet="PermissionLevel">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="OpportunityProgramXRef" TypeName="BusinessIncentivesModel.OpportunityProgramXRef" StoreEntitySet="OpportunityProgramXRef">
+            <EndProperty Name="Program">
+              <ScalarProperty Name="ProgramNumber" ColumnName="ProgramNumber" />
+            </EndProperty>
+            <EndProperty Name="Opportunity">
+              <ScalarProperty Name="OpportunityID" ColumnName="OpportunityID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="BusinessIncentivesModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="PermissionLevelID" ColumnName="PermissionLevelID" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Salt" ColumnName="Salt" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="UserOpportunityXRef" TypeName="BusinessIncentivesModel.UserOpportunityXRef" StoreEntitySet="UserOpportunityXRef">
+            <EndProperty Name="User">
+              <ScalarProperty Name="ID" ColumnName="UserID" />
+            </EndProperty>
+            <EndProperty Name="Opportunity">
+              <ScalarProperty Name="OpportunityID" ColumnName="OpportunityID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="UserProgramXRef" TypeName="BusinessIncentivesModel.UserProgramXRef" StoreEntitySet="UserProgramXRef">
+            <EndProperty Name="User">
+              <ScalarProperty Name="ID" ColumnName="UserID" />
+            </EndProperty>
+            <EndProperty Name="Program">
+              <ScalarProperty Name="ProgramNumber" ColumnName="ProgramNumber" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="FundingLevels">
+            <EntityTypeMapping TypeName="BusinessIncentivesModel.FundingLevel">
+              <MappingFragment StoreEntitySet="FundingLevel">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FieldCodedValues">
+            <EntityTypeMapping TypeName="BusinessIncentivesModel.FieldCodedValue">
+              <MappingFragment StoreEntitySet="FieldCodedValue">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+                <ScalarProperty Name="OriginID" ColumnName="OriginID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FieldCodedValueOrigins">
+            <EntityTypeMapping TypeName="BusinessIncentivesModel.FieldCodedValueOrigin">
+              <MappingFragment StoreEntitySet="FieldCodedValueOrigin">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ColoradoBusinesses">
+            <EntityTypeMapping TypeName="BusinessIncentivesModel.ColoradoBusiness">
+              <MappingFragment StoreEntitySet="ColoradoBusiness">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="EntityFormDate" ColumnName="EntityFormDate" />
+                <ScalarProperty Name="EntityType" ColumnName="EntityType" />
+                <ScalarProperty Name="JurisdictionOfFormation" ColumnName="JurisdictionOfFormation" />
+                <ScalarProperty Name="EntityStatus" ColumnName="EntityStatus" />
+                <ScalarProperty Name="PrincipalCountry" ColumnName="PrincipalCountry" />
+                <ScalarProperty Name="PrincipalZipCode" ColumnName="PrincipalZipCode" />
+                <ScalarProperty Name="PrincipalState" ColumnName="PrincipalState" />
+                <ScalarProperty Name="PrincipalCity" ColumnName="PrincipalCity" />
+                <ScalarProperty Name="PrincipalAddress2" ColumnName="PrincipalAddress2" />
+                <ScalarProperty Name="PrincipalAddress1" ColumnName="PrincipalAddress1" />
+                <ScalarProperty Name="EntityName" ColumnName="EntityName" />
+                <ScalarProperty Name="EntityId" ColumnName="EntityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AssistanceTypes">
+            <EntityTypeMapping TypeName="BusinessIncentivesModel.AssistanceType">
+              <MappingFragment StoreEntitySet="AssistanceType">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomOpportunities">
+            <EntityTypeMapping TypeName="BusinessIncentivesModel.CustomOpportunity">
+              <MappingFragment StoreEntitySet="CustomOpportunity">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="Origin" ColumnName="Origin" />
+                <ScalarProperty Name="EligibilityKeywords" ColumnName="EligibilityKeywords" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="WebLink" ColumnName="WebLink" />
+                <ScalarProperty Name="ClosingDate" ColumnName="ClosingDate" />
+                <ScalarProperty Name="OpeningDate" ColumnName="OpeningDate" />
+                <ScalarProperty Name="AssistanceTypeID" ColumnName="AssistanceTypeID" />
+                <ScalarProperty Name="FundingLevelDetails" ColumnName="FundingLevelDetails" />
+                <ScalarProperty Name="FundingLevelID" ColumnName="FundingLevelID" />
+                <ScalarProperty Name="Summary" ColumnName="Summary" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserSavedSearches">
+            <EntityTypeMapping TypeName="BusinessIncentivesModel.UserSavedSearch">
+              <MappingFragment StoreEntitySet="UserSavedSearch">
+                <ScalarProperty Name="SearchJsonData" ColumnName="SearchJsonData" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="UserCustomOpportunityXRef" TypeName="BusinessIncentivesModel.UserCustomOpportunityXRef" StoreEntitySet="UserCustomOpportunityXRef">
+            <EndProperty Name="User">
+              <ScalarProperty Name="ID" ColumnName="UserID" />
+            </EndProperty>
+            <EndProperty Name="CustomOpportunity">
+              <ScalarProperty Name="ID" ColumnName="CustomOpportunityID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="OpportunityViews">
+            <EntityTypeMapping TypeName="BusinessIncentivesModel.OpportunityView">
+              <MappingFragment StoreEntitySet="OpportunityView">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="GrantorContactPhoneNumber" ColumnName="GrantorContactPhoneNumber" />
+                <ScalarProperty Name="GrantorContactName" ColumnName="GrantorContactName" />
+                <ScalarProperty Name="GrantorContactEmail" ColumnName="GrantorContactEmail" />
+                <ScalarProperty Name="GrantorContactEmailDescription" ColumnName="GrantorContactEmailDescription" />
+                <ScalarProperty Name="GrantorContactText" ColumnName="GrantorContactText" />
+                <ScalarProperty Name="AdditionalInformationURL" ColumnName="AdditionalInformationURL" />
+                <ScalarProperty Name="AdditionalInformationText" ColumnName="AdditionalInformationText" />
+                <ScalarProperty Name="CostSharingOrMatchingRequirement" ColumnName="CostSharingOrMatchingRequirement" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ArchiveDate" ColumnName="ArchiveDate" />
+                <ScalarProperty Name="EstimatedProjectStartDate" ColumnName="EstimatedProjectStartDate" />
+                <ScalarProperty Name="EstimatedAwardDate" ColumnName="EstimatedAwardDate" />
+                <ScalarProperty Name="EstimatedSynopsisCloseDateExplanation" ColumnName="EstimatedSynopsisCloseDateExplanation" />
+                <ScalarProperty Name="EstimatedSynopsisCloseDate" ColumnName="EstimatedSynopsisCloseDate" />
+                <ScalarProperty Name="FiscalYear" ColumnName="FiscalYear" />
+                <ScalarProperty Name="EstimatedSynopsisPostDate" ColumnName="EstimatedSynopsisPostDate" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="AwardFloor" ColumnName="AwardFloor" />
+                <ScalarProperty Name="AwardCeiling" ColumnName="AwardCeiling" />
+                <ScalarProperty Name="EstimatedTotalProgramFunding" ColumnName="EstimatedTotalProgramFunding" />
+                <ScalarProperty Name="ExpectedNumberOfAwards" ColumnName="ExpectedNumberOfAwards" />
+                <ScalarProperty Name="CloseDateExplanation" ColumnName="CloseDateExplanation" />
+                <ScalarProperty Name="CloseDate" ColumnName="CloseDate" />
+                <ScalarProperty Name="PostDate" ColumnName="PostDate" />
+                <ScalarProperty Name="AgencyName" ColumnName="AgencyName" />
+                <ScalarProperty Name="AgencyCode" ColumnName="AgencyCode" />
+                <ScalarProperty Name="AdditionalInformationOnEligibility" ColumnName="AdditionalInformationOnEligibility" />
+                <ScalarProperty Name="EligibleApplicants" ColumnName="EligibleApplicants" />
+                <ScalarProperty Name="CFDANumbers" ColumnName="CFDANumbers" />
+                <ScalarProperty Name="CategoryExplanation" ColumnName="CategoryExplanation" />
+                <ScalarProperty Name="CategoryOfFundingActivity" ColumnName="CategoryOfFundingActivity" />
+                <ScalarProperty Name="FundingInstrumentType" ColumnName="FundingInstrumentType" />
+                <ScalarProperty Name="OpportunityCategoryExplanation" ColumnName="OpportunityCategoryExplanation" />
+                <ScalarProperty Name="OpportunityCategory" ColumnName="OpportunityCategory" />
+                <ScalarProperty Name="OpportunityNumber" ColumnName="OpportunityNumber" />
+                <ScalarProperty Name="OpportunityTitle" ColumnName="OpportunityTitle" />
+                <ScalarProperty Name="OpportunityID" ColumnName="OpportunityID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

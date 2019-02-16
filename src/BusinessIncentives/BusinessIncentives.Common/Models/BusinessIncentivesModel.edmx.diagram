@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="326048b9ac9e479983d2b87122144c4d" Name="Diagram1" ZoomLevel="100">
+        <EntityTypeShape EntityType="BusinessIncentivesModel.Program" Width="3.25" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusinessIncentivesModel.ProgramView" Width="2.625" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BusinessIncentivesModel.Opportunity" Width="1.5" PointX="0.75" PointY="1.25" />
+        <EntityTypeShape EntityType="BusinessIncentivesModel.PermissionLevel" Width="1.5" PointX="4.75" PointY="17.625" />
+        <AssociationConnector Association="BusinessIncentivesModel.OpportunityProgramXRef" />
+        <EntityTypeShape EntityType="BusinessIncentivesModel.User" Width="1.5" PointX="7" PointY="4" />
+        <AssociationConnector Association="BusinessIncentivesModel.FK_User_User" />
+        <AssociationConnector Association="BusinessIncentivesModel.UserOpportunityXRef" />
+        <AssociationConnector Association="BusinessIncentivesModel.UserProgramXRef" />
+        <EntityTypeShape EntityType="BusinessIncentivesModel.FundingLevel" Width="1.5" PointX="2.5" PointY="14" />
+        <EntityTypeShape EntityType="BusinessIncentivesModel.FieldCodedValue" Width="2" PointX="9.5" PointY="9" />
+        <EntityTypeShape EntityType="BusinessIncentivesModel.FieldCodedValueOrigin" Width="2" PointX="6.75" PointY="9.375" />
+        <AssociationConnector Association="BusinessIncentivesModel.FK_FieldCodedValues_FieldCodedValueOrigin" />
+        <EntityTypeShape EntityType="BusinessIncentivesModel.ColoradoBusiness" Width="2.125" PointX="6.75" PointY="12.75" />
+        <EntityTypeShape EntityType="BusinessIncentivesModel.AssistanceType" Width="1.5" PointX="2.5" PointY="11.625" />
+        <EntityTypeShape EntityType="BusinessIncentivesModel.CustomOpportunity" Width="1.5" PointX="4.75" PointY="11.375" />
+        <EntityTypeShape EntityType="BusinessIncentivesModel.UserSavedSearch" Width="1.5" PointX="6.75" PointY="0.75" />
+        <AssociationConnector Association="BusinessIncentivesModel.FK_CustomOpportunity_AssistanceType" />
+        <AssociationConnector Association="BusinessIncentivesModel.FK_CustomOpportunity_FundingLevel" />
+        <AssociationConnector Association="BusinessIncentivesModel.UserCustomOpportunityXRef" />
+        <EntityTypeShape EntityType="BusinessIncentivesModel.OpportunityView" Width="1.5" PointX="9.75" PointY="12.75" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

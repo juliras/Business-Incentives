@@ -1,0 +1,87 @@
+﻿<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/"><img src="/Content/Images/logo.png" /></a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-main" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-main">
+            <ul class="nav navbar-nav">
+                <li class="nav-item" ng-class="getClass('/search')"><a class="nav-link" ng-href="#!/search" ng-click="hideNavMenu()">Find Opportunities</a></li>
+                <li class="nav-item" ng-class="getClass('/submitOpportunity')" ng-if="true || canSubmitOpportunities"><a class="nav-link" ng-href="#!/submitOpportunity" ng-click="hideNavMenu()">Submit Opportunities</a></li>
+                <li class="nav-item" ng-class="getClass('/submitOpportunity')" ng-if="false && !canSubmitOpportunities"><a class="nav-link" title="Must be logged in with elevated permissions.">Submit Opportunities</a></li>
+                <li class="nav-item" ng-class="getClass('/about')"><a class="nav-link" ng-href="#!/about" ng-click="hideNavMenu()">About</a></li>
+                <li class="nav-item" ng-class="getClass('/contact')"><a class="nav-link" ng-href="#!/contact" ng-click="hideNavMenu()">Contact</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li ng-if="!userLoggedIn"><a ng-href="#!" ng-click="onUserClick()">Sign In</a></li>
+                <li ng-if="userLoggedIn"><a ng-href="#!" ng-click="onUserClick()">Hi {{ loggedInUser.UserFirstName }}!</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+    <!-- User Account Modal -->
+    <script type="text/ng-template" id="userModalView.html">
+        <form ng-keypress="submitOnEnterKey($event)">
+            <link href="../../../../Content/css/floating-labels.css" rel="stylesheet">
+            <div class="modal-header">
+                <h3 ng-if="!userLoggedIn && !isNewUser" class="modal-title text-center" id="modal-title">User Login</h3>
+                <h3 ng-if="userLoggedIn && !isNewUser" class="modal-title text-center" id="modal-title">User Profile</h3>
+                <h3 ng-if="isNewUser" class="modal-title text-center" id="modal-title">Create Profile</h3>
+            </div>
+            <div class="modal-body form-group" id="modal-body">
+                <!-- New user info -->
+                <div ng-if="isNewUser || userLoggedIn" id="newUser">
+                    <div class="login-form-label-group">
+                        <input type="text" ng-model="newUser.username" placeholder="Username" class="form-control" id="inputUsername" required autofocus />
+                        <label for="inputUsername">Username</label>
+                    </div>
+                    <div class="login-form-label-group">
+                        <input type="password" ng-model="newUser.password" placeholder="Password" class="form-control" id="inputPassword" required />
+                        <label for="inputPassword">Password</label>
+                    </div>
+                    <div class="login-form-label-group">
+                        <input type="email" ng-model="newUser.email" placeholder="me@example.com" class="form-control" id="inputEmail" required />
+                        <label for="inputEmail">Email</label>
+                    </div>
+                    <div class="login-form-label-group">
+                        <input type="text" ng-model="newUser.firstname" placeholder="First Name" class="form-control" id="inputFirstName" required />
+                        <label for="inputFirstName">First Name</label>
+                    </div>
+                    <div class="login-form-label-group">
+                        <input type="text" ng-model="newUser.lastname" placeholder="Last Name" class="form-control" id="inputLastName" required />
+                        <label for="inputLastName">Last Name</label>
+                    </div>
+                </div>
+                <!-- Current user login -->
+                <div ng-if="!isNewUser && !userLoggedIn" class="login-form-label-group" id="currentUser">
+                    <div class="login-form-label-group">
+                        <input type="text" ng-disabled="userLoggedIn" ng-model="userLogin.username" placeholder="Username" class="form-control" id="inputUsername" required autofocus />
+                        <label for="inputUsername">Username</label>
+                    </div><div class="login-form-label-group">
+                        <input type="password" ng-disabled="userLoggedIn" ng-model="userLogin.password" placeholder="Password" class="form-control" id="inputPassword" required />
+                        <label for="inputPassword">Password</label>
+                    </div>
+                </div>
+            </div>
+            <!-- User NOT logged in -->
+            <div ng-if="!userLoggedIn && !isNewUser" class="modal-footer btn-group center-block">
+                <button class="btn btn-info" type="button" ng-click="showNewUser()">New User</button>
+                <button class="btn btn-success" type="button" ng-click="okLogin(userLogin)">Login</button>
+                <button class="btn btn-danger" type="button" ng-click="cancel()">Cancel</button>
+            </div>
+            <div ng-if="!userLoggedIn && isNewUser" class="modal-footer btn-group center-block">
+                <button class="btn btn-info" type="button" ng-click="createUser(newUser)">Create Profile</button>
+                <button class="btn btn-danger" type="button" ng-click="cancel()">Cancel</button>
+            </div>
+            <div ng-if="userLoggedIn && !isNewUser" class="modal-footer btn-group center-block">
+                <button class="btn btn-info top" type="button" ng-click="updateProfile(newUser)">Update</button>
+                <button class="btn btn-success" type="button" ng-click="okLogout(loggedInUser.username)">Logout</button>
+                <button class="btn btn-danger" type="button" ng-click="cancel()">Cancel</button>
+            </div>
+        </form>
+</script>
+</nav>

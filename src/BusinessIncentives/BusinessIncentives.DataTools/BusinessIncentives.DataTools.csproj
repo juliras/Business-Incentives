@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{40608BB2-1BC5-46BF-8CDB-BAF194D22183}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>BusinessIncentives.DataTools</RootNamespace>
+    <AssemblyName>BusinessIncentives.DataTools</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataLinkers\GrantProgramLinker.cs" />
+    <Compile Include="DataLoaders\ColoradoBusiness\ColoradoBusinessesLoader.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="DataLoaders\Grants\OpportunitiesLoader.cs" />
+    <Compile Include="DataLinkResult.cs" />
+    <Compile Include="DataLoadResult.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="DataLoaders\Programs\ProgramsDataLoader.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="DataLoaders\Grants\Docs\OpportunityDetail-V1.0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessIncentives.Common\BusinessIncentives.Common.csproj">
+      <Project>{c62bdb17-843c-4111-bbc0-fa60ad453992}</Project>
+      <Name>BusinessIncentives.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Diagrams\BusinessIncentives_DataModel.png" />
+    <Content Include="SQL Scripts\DB Creation Scripts\2 - Create Tables.sql" />
+    <Content Include="SQL Scripts\DB Creation Scripts\3 - Create Views.sql" />
+    <Content Include="SQL Scripts\DB Creation Scripts\1 - CreateDB and LocalService User.sql" />
+    <Content Include="SQL Scripts\DB Creation Scripts\5 - Create indexes.sql" />
+    <Content Include="SQL Scripts\DB Creation Scripts\4 - Create Reference Data.sql" />
+    <Content Include="Docs\BusinessIncentives_DataModel_v1.0.jpg" />
+    <Content Include="DataLoaders\Grants\Scripts\XmlDataBulkLoader.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DataLoaders\Programs\Data\ProgramCriteria.xml" />
+    <Content Include="SQL Scripts\Utility Scripts\Cleanup Script.sql" />
+    <Content Include="SQL Scripts\Utility Scripts\Data Analysis.sql" />
+    <Content Include="SQL Scripts\Utility Scripts\Programs-TypeOfAssistance-Criteria.sql" />
+    <Content Include="SQL Scripts\Utility Scripts\DetectMaxDataLengths.sql" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,228 @@
+﻿<ProgramCriteria>
+	<TypeOfAssistance>
+		<option>Formula Grants%</option>
+		<option>Cooperative Agreements%</option>
+		<option>Project Grants%</option>
+		<option>Direct Payments for%Specified Use%</option>
+		<option>Direct Payments with Unrestricted Use%</option>
+		<option>Direct Loans%</option>
+		<option>Guaranteed/Insured Loans%</option>
+		<option>Loan Guarantees/Grants%</option>
+		<option>Insurance%</option>
+		<option>Sale, Exchange, or Donation of Property%Goods%</option>
+		<option>Use of Property, Facilities, Equipment%</option>
+		<option>Provision of Specialized Services%</option>
+		<option>Advisory Services Counseling%</option>
+		<option>Dissemination of Technical Information%</option>
+		<option>Information%</option>
+		<option>Training%</option>
+		<option>Investigation of Complaints%</option>
+		<option>Federal Employment%</option>
+	</TypeOfAssistance>
+	<FederalAgency>
+		<option>Agency for International Development</option>
+		<option>Regional Commission</option>
+		<option>Transportation Barriers Compliance Board</option>
+		<option>Scholarship and Excellence In Education Foundation</option>
+		<option>Broadcasting Board of Governors</option>
+		<option>Christopher Columbus Fellowship Foundation</option>
+		<option>Commodity Futures Trading Commission</option>
+		<option>Consumer Product Safety Commission</option>
+		<option>National and Community Service</option>
+		<option>Regional Authority</option>
+		<option>Denali Commission</option>
+		<option>Denali Commission</option>
+		<option>Department of Agriculture</option>
+		<option>Department of Commerce</option>
+		<option>Department of Defense</option>
+		<option>Department of Education</option>
+		<option>Department of Energy</option>
+		<option>Department of Health and Human Services</option>
+		<option>Department of Homeland Security</option>
+		<option>Department of Housing and Urban Development</option>
+		<option>Department of Justice</option>
+		<option>Department of Labor</option>
+		<option>Department of State</option>
+		<option>Department of Transportation</option>
+		<option>Department of Veterans Affairs</option>
+		<option>Department of the Interior</option>
+		<option>Department of the Treasury</option>
+		<option>Environmental Protection Agency</option>
+		<option>Equal Employment Opportunity Commission</option>
+		<option>Executive Office of the President</option>
+		<option>Export - Import Bank of the United States</option>
+		<option>Federal Communications Commission</option>
+		<option>Federal Council on the Arts and the Humanities</option>
+		<option>Federal Maritime Commission</option>
+		<option>Federal Mediation and Conciliation Service</option>
+		<option>Federal Trade Commission</option>
+		<option>General Services Administration</option>
+		<option>Government Publishing Office</option>
+		<option>Gulf Coast Ecosystem Restoration Council</option>
+		<option>Harry S Truman Scholarship Foundation</option>
+		<option>Institute of Museum and Library Services</option>
+		<option>Inter-American Foundation</option>
+		<option>James Madison Memorial Fellowship Foundation</option>
+		<option>Japan U.S. Friendship Commission</option>
+		<option>Library of Congress</option>
+		<option>Millennium Challenge Corporation</option>
+		<option>Morris K. Udall Foundation</option>
+		<option>National Aeronautics and Space Administration</option>
+		<option>National Archives and Records Administration</option>
+		<option>National Council on Disability</option>
+		<option>National Credit Union Administration</option>
+		<option>National Endowment for the Arts</option>
+		<option>National Endowment for the Humanities</option>
+		<option>National Gallery of Art</option>
+		<option>National Labor Relations Board</option>
+		<option>National Science Foundation</option>
+		<option>Northern Border Regional Commission</option>
+		<option>Nuclear Regulatory Commission</option>
+		<option>Office of Personnel Management</option>
+		<option>Overseas Private Investment Corporation</option>
+		<option>Peace Corps</option>
+		<option>Pension Benefit Guaranty Corporation</option>
+		<option>Railroad Retirement Board</option>
+		<option>Securities and Exchange Commission</option>
+		<option>Small Business Administration</option>
+		<option>Smithsonian Institution</option>
+		<option>Social Security Administration</option>
+		<option>U.S. Commission on Civil Rights</option>
+		<option>U.S. Election Assistance Commission</option>
+		<option>US African Development Foundation</option>
+		<option>United States Institute of Peace</option>
+		<option>Vietnam Education Foundation</option>
+		<option>Woodrow Wilson International Center for Scholars</option>
+	</FederalAgency>
+	<ApplicantEligibility>
+		<option>U.S. Territories and possessions</option>
+		<option>Government - General</option>
+		<option>Federal</option>
+		<option>Interstate</option>
+		<option>Intrastate</option>
+		<option>State</option>
+		<option>State (includes District of Columbia, public institutions of higher education and hospitals)</option>
+		<option>Local (includes State-designated lndian Tribe...des institutions of higher education and hospitals</option>
+		<option>Sponsored organization</option>
+		<option>Public nonprofit institution/organization (includes institutions of higher education and hospitals)</option>
+		<option>Other public institution/organization</option>
+		<option>Federally Recognized lndian Tribal Governments</option>
+		<option>U.S. Territories and possessions (includes institutions of higher education and hospitals)</option>
+		<option>Non-Government - General</option>
+		<option>Individual/Family</option>
+		<option>Minority group</option>
+		<option>Specialized group (e.g. health professionals, students, veterans)</option>
+		<option>Small business (less than 500 employees)</option>
+		<option>Profit organization</option>
+		<option>Private nonprofit institution/organization (includes institutions of higher education and hospitals)</option>
+		<option>Quasi-public nonprofit institution/organization</option>
+		<option>Other private institutions/organizations</option>
+		<option>Anyone/general public</option>
+		<option>Native American Organizations (includes lndia...ratives, corporations, partnerships, associations)</option>
+	</ApplicantEligibility>
+	<UseOfAssistance>
+		<option>Agriculture/Forestry/Fish and Game</option>
+		<option>Business/Commerce</option>
+		<option>Civil Defense/Disaster Prevention and Relief/Emergency Preparedness</option>
+		<option>Communications</option>
+		<option>Community Development (includes Federal surplus property)</option>
+		<option>Construction/Renewal/Rehabilitation</option>
+		<option>Consumer Protection</option>
+		<option>Culture/Arts/Humanities</option>
+		<option>Economic Development</option>
+		<option>Elementary/Secondary Education</option>
+		<option>Employment/Labor/Management</option>
+		<option>Energy</option>
+		<option>Environment (water, air, solid waste, pesticides, radiation)</option>
+		<option>Food and Nutrition</option>
+		<option>Health/Medical</option>
+		<option>Higher Education (includes Research)</option>
+		<option>Housing</option>
+		<option>Income Security/Social Service/Welfare</option>
+		<option>International (includes Export/lmport)</option>
+		<option>Law, Justice, and Legal Services</option>
+		<option>Libraries/lnformation/Statistics</option>
+		<option>Maritime</option>
+		<option>Natural Resources (mineral, water, wildlife, land)</option>
+		<option>Planning</option>
+		<option>Public Works</option>
+		<option>Recreation (includes Historic Preservation)</option>
+		<option>Regional Development</option>
+		<option>Science and Technology</option>
+		<option>Training</option>
+		<option>Transportation</option>
+		<option>Vocational Education</option>
+		<option>Vocational Rehabilitation</option>
+		<option>Youth Development</option>
+	</UseOfAssistance>
+	<BeneficiaryEligibility>
+		<option>Federal</option>
+		<option>Interstate</option>
+		<option>Intrastate</option>
+		<option>State</option>
+		<option>Local</option>
+		<option>Sponsored organization</option>
+		<option>Public nonprofit institution/organization</option>
+		<option>Other public institution/organization</option>
+		<option>Federally Recognized Indian Tribal Governments</option>
+		<option>U.S. Territories</option>
+		<option>Individual/Family</option>
+		<option>Minority group</option>
+		<option>Specialized group (e.g. health professionals, students, veterans)</option>
+		<option>Small business</option>
+		<option>Profit organization</option>
+		<option>Private nonprofit institution/organization</option>
+		<option>Quasi-public nonprofit organization</option>
+		<option>Other private institution/organization</option>
+		<option>Anyone/general public</option>
+		<option>Native American Organizations</option>
+		<option>Health Professional</option>
+		<option>Education Professional</option>
+		<option>Student/Trainee</option>
+		<option>Graduate Student</option>
+		<option>Scientist/Researchers</option>
+		<option>Artist/Humanist</option>
+		<option>Engineer/Architect</option>
+		<option>Builder/Contractor/Developer</option>
+		<option>Farmer/Rancher/Agriculture Producer</option>
+		<option>Industrialist/ Business person</option>
+		<option>Small Business Person</option>
+		<option>Consumer</option>
+		<option>Homeowner</option>
+		<option>Land/Property Owner</option>
+		<option>Black</option>
+		<option>American Indian</option>
+		<option>Spanish Origin</option>
+		<option>Asian</option>
+		<option>Other Non-White</option>
+		<option>Migrant</option>
+		<option>U.S. Citizen</option>
+		<option>Refugee/Alien</option>
+		<option>Veteran/Service person/Reservist (including dependents</option>
+		<option>Women</option>
+		<option>Disabled (e.g. Deaf, Blind, Physically Disabled)</option>
+		<option>Physically Afflicted (e.g. TB, Arthritis, Heart Disease)</option>
+		<option>Mentally Disabled</option>
+		<option>Drug Addict</option>
+		<option>Alcoholic</option>
+		<option>Juvenile Delinquent</option>
+		<option>Preschool</option>
+		<option>School</option>
+		<option>Infant (0-5)</option>
+		<option>Child (6-15)</option>
+		<option>Youth (16-21)</option>
+		<option>Senior Citizen (60+)</option>
+		<option>Unemployed</option>
+		<option>Welfare Recipient</option>
+		<option>Pension Recipient</option>
+		<option>Moderate Income</option>
+		<option>Low Income</option>
+		<option>Major Metropolis (over 250,000)</option>
+		<option>Other Urban</option>
+		<option>Suburban</option>
+		<option>Rural</option>
+		<option>Education (0-8)</option>
+		<option>Education (9-12)</option>
+		<option>Education (13+)</option>
+	</BeneficiaryEligibility>
+</ProgramCriteria>

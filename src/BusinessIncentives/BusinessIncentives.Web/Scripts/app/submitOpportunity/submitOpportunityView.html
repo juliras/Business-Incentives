@@ -1,0 +1,166 @@
+﻿<div class="container-fluid" ng-controller="submitOpportunityController" ng-if="true || canSubmitOpportunities">
+    <bi-paco-loader ng-if="isLoading"></bi-paco-loader>
+    <!-- Submission Form -->
+    <div class="row mt-3">
+        <div class="col-md-12 submit-opportunity-form">
+            <h1>Submit Opportunity</h1>
+            <form ng-submit="submitOpportunity()">
+                <!-- Name -->
+                <div class="row mt-1">
+                    <div class="col-sm-2 hidden-xs"></div>
+                    <div class="col-sm-2 controls">
+                        <label class="control-label" for="textinput">Name</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="text" title="Opportunity Name" ng-model="opportunity.Name" placeholder="Opportunity Name" class="form-control">
+                    </div>
+                    <div class="col-sm-1 hidden-xs"></div>
+                </div>
+                <!-- Summary -->
+                <div class="row mt-1">
+                    <div class="col-sm-2 hidden-xs"></div>
+                    <div class="col-sm-2 controls">
+                        <label class="control-label" for="textinput">Summary</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <textarea type="text" title="Summary" cols="50" rows="20" ng-model="opportunity.Summary" placeholder="Opportunity Summary" class="form-control"></textarea>
+                    </div>
+                    <div class="col-sm-1 hidden-xs"></div>
+                </div>
+                <!-- Assistance Type -->
+                <div class="row mt-1">
+                    <div class="col-sm-2 hidden-xs"></div>
+                    <div class="col-sm-2 controls">
+                        <label class="control-label" for="textinput">Assistance Type</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <select ng-model="opportunity.AssistanceTypeID" ng-options="assistanceType.id as assistanceType.label for assistanceType in formData.assistanceTypes" class="form-control">
+                            <option value="" disabled selected>Select a type of assitance</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-1 hidden-xs"></div>
+                </div>
+                <!-- Funding Level -->
+                <div class="row mt-1">
+                    <div class="col-sm-2 hidden-xs"></div>
+                    <div class="col-sm-2 controls">
+                        <label class="control-label" for="textinput">Funding Level</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <select ng-model="opportunity.FundingLevelID" ng-options="fundingLevel.id as fundingLevel.label for fundingLevel in formData.fundingLevels" class="form-control">
+                            <option value="" disabled selected>Select funding level</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-1 hidden-xs"></div>
+                </div>
+                <!-- Funding Level Details -->
+                <div class="row mt-1">
+                    <div class="col-sm-2 hidden-xs"></div>
+                    <div class="col-sm-2 controls">
+                        <label class="control-label" for="textinput">Funding Level Details</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="text" title="Funding Level Details" ng-model="opportunity.FundingLevelDetails" placeholder="Funding Level Details" class="form-control">
+                    </div>
+                    <div class="col-sm-1 hidden-xs"></div>
+                </div>
+                <!-- Weblink -->
+                <div class="row mt-1">
+                    <div class="col-sm-2 hidden-xs"></div>
+                    <div class="col-sm-2 controls">
+                        <label class="control-label" for="textinput">Web URL</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="text" title="Web URL" ng-model="opportunity.WebLink" placeholder="Web URL" class="form-control">
+                    </div>
+                    <div class="col-sm-1 hidden-xs"></div>
+                </div>
+                <!-- Origin -->
+                <div class="row mt-1">
+                    <div class="col-sm-2 hidden-xs"></div>
+                    <div class="col-sm-2 controls">
+                        <label class="control-label" for="textinput">Origin</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="text" title="Origin" ng-model="opportunity.Origin" placeholder="Type the name of your company, agency or entity here." class="form-control">
+                    </div>
+                    <div class="col-sm-1 hidden-xs"></div>
+                </div>
+                <!-- Phone Number -->
+                <div class="row mt-1">
+                    <div class="col-sm-2 hidden-xs"></div>
+                    <div class="col-sm-2 controls">
+                        <label class="control-label" for="textinput">Phone Number</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="tel" title="Phone Number" ng-model="opportunity.PhoneNumber" placeholder="Phone Number" class="form-control">
+                    </div>
+                    <div class="col-sm-1 hidden-xs"></div>
+                </div>
+                <!-- Email -->
+                <div class="row mt-1">
+                    <div class="col-sm-2 hidden-xs"></div>
+                    <div class="col-sm-2 controls">
+                        <label class="control-label" for="textinput">Email</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="email" title="Email" ng-model="opportunity.Email" placeholder="Email" class="form-control">
+                    </div>
+                    <div class="col-sm-1 hidden-xs"></div>
+                </div>
+                <!-- Keywords -->
+                <div class="row mt-1">
+                    <div class="col-sm-2 hidden-xs"></div>
+                    <div class="col-sm-2 controls">
+                        <label class="control-label" for="textinput">Keywords</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="text" title="Keywords" ng-model="opportunity.EligibilityKeywords" placeholder="Keywords" class="form-control">
+                    </div>
+                    <div class="col-sm-1 hidden-xs"></div>
+                </div>
+                <!-- Opening Date -->
+                <div class="row mt-1">
+                    <div class="col-sm-2 hidden-xs"></div>
+                    <div class="col-sm-2 controls">
+                        <label class="control-label" for="textinput">Opening Date</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="date" title="Opening Date" ng-model="opportunity.OpeningDate" placeholder="Opening Date (mm/dd/yyyy)" class="form-control">
+                    </div>
+                    <div class="col-sm-1 hidden-xs"></div>
+                </div>
+                <!-- Closing Date -->
+                <div class="row mt-1">
+                    <div class="col-sm-2 hidden-xs"></div>
+                    <div class="col-sm-2 controls">
+                        <label class="control-label" for="textinput">Closing Date</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="date" title="Closing Date" ng-model="opportunity.ClosingDate" placeholder="Closing Date (mm/dd/yyyy)" class="form-control">
+                    </div>
+                </div>
+                <div class="row mt-1">
+
+                    <div class="col-md-5 hidden-sm"></div>
+                    <div class="col-md-1 hidden-sm">
+                        <button type="submit" class="btn btn-success center-block visible-lg visible-md">Submit</button>
+                    </div>
+                    <div class="col-xs-1"></div>
+                    <div class="col-xs-12">
+                        <button type="submit" class="btn btn-success btn-block visible-sm visible-xs">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container-fluid" ng-controller="submitOpportunityController" ng-if="false && !canSubmitOpportunities">
+    <div class="row mt-4">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="alert-warning text-center submit-opp-alert" close="alertClose()"><p><strong><span class="glyphicon glyphicon-warning-sign"></span> You must be logged in with elevated permissions to access this page.</strong></p></div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>

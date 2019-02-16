@@ -1,0 +1,269 @@
+﻿<div class="container-fluid" ng-controller="searchController">
+    <bi-paco-loader ng-if="isLoading"></bi-paco-loader>
+    <!-- Search Form -->
+    <div class="row mt-3">
+        <div class="col-md-12 search-form">
+            <form ng-submit="search()">
+                <h1 ng-app="" ng-if="formFillingStarted">My {{businessInfo.businessType.name}} Business</h1>
+                <h1 ng-app="" ng-if="!formFillingStarted">My business is:</h1>
+                <hr />
+                <div class="center-block" ng-show="!formFillingStarted">
+                    <!-- Type of business -->
+                    <input class="btn btn-business" ng-click="onBusinessTypeSelected({name:'New',type: 'New'})" value="New" />
+                    <input class="btn btn-business" ng-click="onBusinessTypeSelected({name:'Existing',type:'Existing'})" value="Existing" />
+                    <input class="btn btn-business" ng-click="onBusinessTypeSelected({name:'Relocating',type:'Relocating'})" value="Relocating" />
+                </div>
+                <div class="row">
+                    <div class="col-md-2 hidden-sm col-"></div>
+                    <div class="col-md-4 col-xs-12" ng-if="businessInfo.businessType.name === 'Existing' || businessInfo.businessType.name === 'Relocating'">
+                        <!-- Business Info -->
+                        <h4>What is your business' name?</h4>
+                        <input type="text"
+                               ng-model="businessInfo.name"
+                               placeholder="Type your company name here"
+                               uib-typeahead="businessName for businessName in getBusinessNames($viewValue)"
+                               typeahead-loading="isLoading"
+                               typeahead-no-results="noBusinessNameResults"
+                               typeahead-on-select="onBusinessNameSelected($item, $model, $label, $event)"
+                               typeahead-should-select="onBusinessNameKeyUp($event)"
+                               class="form-control"
+                               typeahead-editable="true"
+                               ng-blur="onBusinessNameControlBlur()">
+                        <bi-loader ng-show="isLoading"></bi-loader>
+                        <div ng-show="noBusinessNameResults">
+                            <p><em><span class="text-muted">(Business not found in Secretary of State data)</span></em></p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xs-12" ng-if="businessInfo.businessType">
+                        <!-- Business Attributes -->
+                        <h4>Select your business attributes</h4>
+                        <div ng-dropdown-multiselect="" options="formData.businessAttributes" selected-model="businessInfo.attributes" extra-settings="formSettings" id="initiatives" events="{onItemSelect: onAttributeSelected, onSelectAll: hideMultiselectDropdowns, onDeselectAll: hideMultiselectDropdowns }"></div>
+                        <p>
+                            <em>
+                                <span ng-repeat="attribute in businessInfo.attributes">{{getAttributeById(attribute.id).label}} {{ ($index !==  businessInfo.attributes.length - 1 ? "|" : "" )}}</span>
+                            </em>
+                        </p>
+
+                    </div>
+                    <div class="col-md-2 hidden-sm"></div>
+                </div>
+                <div class="row row-address" ng-if="businessInfo.businessType.name">
+                    <div class="col-md-2 hidden-sm"></div>
+                    <div class="col-md-8 col-xs-12" ng-if="businessInfo.businessType.name === 'New'">
+                        <!-- Business Address -->
+                        <h4>Please enter your address</h4>
+                        <input type="text" title="Per Secretary of State data" ng-model="businessInfo.name" placeholder="Business Name" class="form-control" ng-readonly="true">
+                        <input type="text" ng-model="businessInfo.address.line1" placeholder="Address Line 1" class="form-control">
+                        <input type="text" ng-model="businessInfo.address.line2" placeholder="Address Line 2" class="form-control">
+                        <input type="text" ng-model="businessInfo.address.city" placeholder="City" class="form-control">
+                        <input type="text" ng-model="businessInfo.address.state" placeholder="State" class="form-control">
+                        <input type="text" ng-model="businessInfo.address.zip" ng-blur="onZipBlur();" placeholder="Zip Code" class="form-control  col-xs-8">
+                        <button type="button" ng-if="mapWasLoadedOnce" class="btn btn-success" ng-click="generateMap()">Refresh Map</button>
+                    </div>
+                    <div class="col-md-6 col-xs-8" ng-if="businessInfo.businessType.name === 'Existing' && addressFound">
+                        <!-- Business Address -->
+                        <h4>Please verify your address</h4>
+                        <textarea class="form-control row-address" rows="4" ng-if="businessFound" title="Per Secretary of State data"
+                                  ng-model="businessInfo.name + '\r' +
+                                  businessInfo.address.line1 + ', ' +
+                                  businessInfo.address.line2 + '\r' +
+                                  businessInfo.address.city + ', ' +
+                                  businessInfo.address.state + '\r' +
+                                  businessInfo.address.zip"
+                                  placeholder="Business Name" ng-readonly="true">
+                        </textarea>
+                        <button type="button" ng-if="mapWasLoadedOnce" class="btn btn-success" ng-click="generateMap()">Refresh Map</button>
+                    </div>
+                    <div class="col-md-2 hidden-sm"></div>
+                </div>
+                <div class="row" ng-if="formFillingStarted">
+                    <div class="col-md-2 hidden-sm"></div>
+                    <div class="col-md-4 col-xs-12">
+                        <!-- Keywords -->
+                        <h4>Keywords</h4>
+                        <input type="text" title="Keywords" ng-model="searchModel.Keywords" placeholder="Type a few keywords here" class="form-control">
+                    </div>
+                    <div class="col-md-5 col-xs-12">
+                        <!-- Type of business -->
+                        <h4>What type of business is this?</h4>
+                        <select ng-model="businessInfo.businessType.name" ng-options="businessType.name as businessType.name for businessType in formData.businessTypes" class="form-control">
+                            <option value="" disabled selected>Select One</option>
+                        </select>
+                    </div>
+                    <div class="col-md-1 hidden-sm"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 hidden-sm"></div>
+                    <div class="col-md-4 col-xs-12" ng-if="businessInfo.businessType.name">
+                        <!-- Industry -->
+                        <h4>Select your industry</h4>
+                        <div ng-dropdown-multiselect="" options="formData.industries" selected-model="businessInfo.industries" extra-settings="formSettings" id="industries" events="{ onItemSelect: onIndustrySelected, onSelectAll: hideMultiselectDropdowns, onDeselectAll: hideMultiselectDropdowns, onMouseLeave: hideMultiselectDropdowns }"></div>
+                        <p><em><span ng-repeat="industry in businessInfo.industries">{{ getIndustryById(industry.id).label }} {{ ($index !== businessInfo.industries.length - 1 ? "|" : "" )}} </span></em></p>
+                    </div>
+                    <div class="col-md-5 col-xs-12" ng-if="businessInfo.businessType.name">
+                        <!-- Type of Assistance Needed -->
+                        <h4>What types of assistance do you need?</h4>
+                        <div ng-dropdown-multiselect="" options="formData.assistanceTypes" selected-model="businessInfo.assistancesNeeded" extra-settings="formSettings" id="assistance" events="{ onItemSelect: onAssistanceSelected, onSelectAll: hideMultiselectDropdowns, onDeselectAll: hideMultiselectDropdowns }"></div>
+                        <p><em><span ng-repeat="assistanceType in businessInfo.assistancesNeeded">{{ getAssistanceById(assistanceType.id).label }} {{ ($index !==  businessInfo.assistancesNeeded.length - 1 ? "|" : "" )}} </span></em></p>
+                    </div>
+                    <div class="col-md-1 hidden-sm"></div>
+                </div>
+                <hr />
+                <div class="row center-block" ng-if="formFillingStarted">
+                    <div class="col">
+                        <button type="submit" class="btn btn-success">Search</button>
+                        <button type="reset" class="btn btn-danger" ng-click="openConfirmModal('sm')">Reset Form</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Map With Enterprise Zones and Opportunity Zones -->
+    <div class="row" ng-show="isMapLoading">
+        <h3 class="map-loading-title">Loading map...</h3>
+        <bi-loader></bi-loader>
+    </div>
+
+    <div class="row search-results" ng-show="isResultVisible && !isLoading && isMapLoaded">
+        <div class="col-md-12">
+            <h1>Enterprise & Opportunity Zones For Your Area</h1>
+            <div class="map-container" ng-show="isMapLoaded" id="map"></div>
+        </div>
+        <!-- Map Legend -->
+        <bi-map-legend ng-show="isMapLoaded"></bi-map-legend>
+    </div>
+
+    <!-- List of Opportunities -->
+    <div class="row mt-4 search-results search-results-section1" ng-show="isResultVisible && !isLoading && assistanceResult.CountOfAllOpportunities === 0">
+        <div class="col-md-12 mb-4">
+            <h1>No result found! Try using different criteria.</h1>
+        </div>
+    </div>
+    <div class="row mt-4 search-results search-results-section1" ng-show="isResultVisible && !isLoading && assistanceResult.CountOfAllOpportunities > 0">
+        <div class="col-md-12 mb-4">
+            <h1>Your Opportunities</h1>
+            <!-- City -->
+            <div class="row assistance-section" ng-if="assistanceResult.CountOfCityLevelAssistance > 0">
+                <h2>City</h2>
+                <div class="col-md-12" ng-repeat="assistance in assistanceResult.CityOpportunities">
+                    <div class="assistance-result-container">
+                        <h5>{{assistance.Title}}</h5>
+                        <div class="assistance-info-header">
+                            <div class="header-1">{{assistance.AssistanceOrigin}}</div>
+                            <div class="header-2" title="Assistance Type">{{assistance.AssistanceType}}</div>
+                            <div class="header-3">Opening: {{assistance.CreationDateLabel | date: 'MM/dd/yyyy'}}</div>
+                            <div class="header-4">Closing: {{assistance.CloseDateLabel | date: 'MM/dd/yyyy'}}</div>
+                        </div>
+                        <div class="assistance-content">
+                            <span title="{{assistance.DescriptionLong}}">{{assistance.DescriptionShort}}</span>
+                        </div>
+                        <div class="assistance-tags" title="Your initial search keywords">
+                            <span ng-repeat="tag in assistance.Tags" >{{tag}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- County -->
+            <div class="row assistance-section" ng-if="assistanceResult.CountOfCountyLevelAssistance > 0">
+                <h2>County</h2>
+                <div class="col-md-12" ng-repeat="assistance in assistanceResult.CountyOpportunities">
+                    <div class="assistance-result-container">
+                        <h5>{{assistance.Title}}</h5>
+                        <div class="assistance-info-header">
+                            <div class="header-1">{{assistance.AssistanceOrigin}}</div>
+                            <div class="header-2" title="Assistance Type">{{assistance.AssistanceType}}</div>
+                            <div class="header-3">Opening: {{assistance.CreationDateLabel | date: 'MM/dd/yyyy'}}</div>
+                            <div class="header-4">Closing: {{assistance.CloseDateLabel | date: 'MM/dd/yyyy'}}</div>
+                        </div>
+                        <div class="assistance-content">
+                            <span title="{{assistance.DescriptionLong}}">{{assistance.DescriptionShort}}</span>
+                        </div>
+                        <div class="assistance-tags" title="Your initial search keywords">
+                            <span ng-repeat="tag in assistance.Tags" >{{tag}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- State -->
+            <div class="row assistance-section" ng-if="assistanceResult.CountOfStateLevelAssistance > 0">
+                <h2>State</h2>
+                <div class="col-md-12" ng-repeat="assistance in assistanceResult.StateOpportunities">
+                    <div class="assistance-result-container">
+                        <h5>{{assistance.Title}}</h5>
+                        <div class="assistance-info-header">
+                            <div class="header-1">{{assistance.AssistanceOrigin}}</div>
+                            <div class="header-2" title="Assistance Type">{{assistance.AssistanceType}}</div>
+                            <div class="header-3">Opening: {{assistance.CreationDateLabel | date: 'MM/dd/yyyy'}}</div>
+                            <div class="header-4">Closing: {{assistance.CloseDateLabel | date: 'MM/dd/yyyy'}}</div>
+                        </div>
+                        <div class="assistance-content">
+                            <span title="{{assistance.DescriptionLong}}">{{assistance.DescriptionShort}}</span>
+                        </div>
+                        <div class="assistance-tags" title="Your initial search keywords">
+                            <span ng-repeat="tag in assistance.Tags" >{{tag}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Region -->
+            <div class="row assistance-section" ng-if="assistanceResult.CountOfRegionLevelAssistance > 0">
+                <h2>Region</h2>
+                <div class="col-md-12" ng-repeat="assistance in assistanceResult.RegionOpportunities">
+                    <div class="assistance-result-container">
+                        <h5>{{assistance.Title}}</h5>
+                        <div class="assistance-info-header">
+                            <div class="header-1">{{assistance.AssistanceOrigin}}</div>
+                            <div class="header-2" title="Assistance Type">{{assistance.AssistanceType}}</div>
+                            <div class="header-3">Opening: {{assistance.CreationDateLabel | date: 'MM/dd/yyyy'}}</div>
+                            <div class="header-4">Closing: {{assistance.CloseDateLabel | date: 'MM/dd/yyyy'}}</div>
+                        </div>
+                        <div class="assistance-content">
+                            <span title="{{assistance.DescriptionLong}}">{{assistance.DescriptionShort}}</span>
+                        </div>
+                        <div class="assistance-tags" title="Your initial search keywords">
+                            <span ng-repeat="tag in assistance.Tags" >{{tag}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Federal -->
+            <div class="row assistance-section" ng-if="assistanceResult.CountOfFederalLevelAssistance > 0">
+                <h2>Federal</h2>
+                <div class="col-md-12" ng-repeat="assistance in assistanceResult.FederalOpportunities">
+                    <div class="assistance-result-container">
+                        <h5>{{assistance.Title}}</h5>
+                        <div class="assistance-info-header">
+                            <div class="header-1">{{assistance.AssistanceOrigin}}</div>
+                            <div class="header-2" title="{{assistance.AssistanceType}}">{{assistance.AssistanceType}}</div>
+                            <div class="header-3">Opening: {{assistance.CreationDateLabel | date: 'MM/dd/yyyy'}}</div>
+                            <div class="header-4">Closing: {{assistance.CloseDateLabel | date: 'MM/dd/yyyy'}}</div>
+                        </div>
+                        <div class="assistance-content">
+                            <span title="{{assistance.DescriptionLong}}">{{assistance.DescriptionShort}}</span>
+                        </div>
+                        <div class="assistance-tags" title="Your initial search keywords">
+                            <span ng-repeat="tag in assistance.Tags" >{{tag}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 assistance-result-container-bottom"></div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title" id="modal-title">Are you sure?</h3>
+        </div>
+        <div class="modal-body" id="modal-body">
+            Reset current form?
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-danger" type="button" ng-click="okResetForm()">Yes</button>
+            <button class="btn btn-success" type="button" ng-click="cancelResetForm()">No</button>
+        </div>
+    </script>
+</div>
