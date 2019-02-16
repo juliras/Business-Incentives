@@ -28,11 +28,11 @@ A list of generic criteria has been compiled for users to search with, for examp
 
 ### Search Result
 
-![Business Incentives Search Result](https://github.com/GoCodeColorado/BusinessIncentives/blob/master/docs/Search%20Result%203.png)
+![Business Incentives Search Result](https://github.com/juliras/Business-Incentives/blob/master/docs/Search%20Result.png)
 
 ## Solution
 
-![Flow Chart](https://github.com/GoCodeColorado/BusinessIncentives/blob/master/src/BusinessIncentives/BusinessIncentives.Web/Content/Images/FlowChart.png)
+![Flow Chart](https://github.com/juliras/Business-Incentives/blob/master/docs/FlowChart.png)
 
 ### Data Aggregation & Processing
 
@@ -67,7 +67,7 @@ Three datasets were used from the Colorado Information Marketplace, two federal 
 
 ### Data Model Diagram with Annotations
 
-![Data Model](https://github.com/GoCodeColorado/BusinessIncentives/blob/master/src/BusinessIncentives/BusinessIncentives.DataTools/Diagrams/BusinessIncentives_DataModel.png)
+![Data Model](https://github.com/juliras/Business-Incentives/blob/master/docs/BusinessIncentives_DataModel.png)
 
 ### Security
 
@@ -82,33 +82,33 @@ Notes about security:
 ## Code Walk-through
 
 ### Our solution contains 4 main projects
-![Business Incentives Solution Overview](https://github.com/GoCodeColorado/BusinessIncentives/blob/master/docs/Code_Walkthrough1.png)
+![Business Incentives Solution Overview](https://github.com/juliras/Business-Incentives/blob/master/docs/Code_Walkthrough1.png)
 
 * **BusinessIncentives.Web** is the web layer containing our responsive website. It is an ASP.NET MVC application with Web API and hosting an Angular JS v1.7 application.
 
-![Business Incentives Website Project](https://github.com/GoCodeColorado/BusinessIncentives/blob/master/docs/Code_Walkthrough2.png)
-![Web API](https://github.com/GoCodeColorado/BusinessIncentives/blob/master/docs/Code_Walkthrough7.png)
+![Business Incentives Website Project](https://github.com/juliras/Business-Incentives/blob/master/docs/Code_Walkthrough2.png)
+![Web API](https://github.com/juliras/Business-Incentives/blob/master/docs/Code_Walkthrough7.png)
 
 Client side the Angular JS application calls API actions on the server side to retrieve data or perform business logic. 
 Server side, we created repositories in charge of fetching the data using Entity Framework, and using the `IQueryable` interface so we could construct queries step by step before the resulting SQL code is sent to the database.
 
 * **BusinessIncentives.DataTools** is a C# console application processing and loading and linking data from the disparate datasets
 
-![Business Incentives DataTools Project](https://github.com/GoCodeColorado/BusinessIncentives/blob/master/docs/Code_Walkthrough3.png)
+![Business Incentives DataTools Project](https://github.com/juliras/Business-Incentives/blob/master/docs/Code_Walkthrough3.png)
 
 * **BusinessIncentives.Common** is a C# library project containing entities and tools used by other projects, for example, our Entity Framework model (ORM tool from Microsoft), our keyword curator, etc. 
 
-![Business Incentives DataTools Project](https://github.com/GoCodeColorado/BusinessIncentives/blob/master/docs/Code_Walkthrough4.png)
+![Business Incentives DataTools Project](https://github.com/juliras/Business-Incentives/blob/master/docs/Code_Walkthrough4.png)
 
 * **BusinessIncentives.Tests** is a C# Unit Test project containing unit tests
 
 * **A word about criteria mapping:** as mentioned above, we maintain a map of generic criteria matched with origin specific codes (often referred to as "coded field values"). For this we use two database tables: one containing the possible origins, and another one containing the mapping:
 
-![Criteria Mapping Tables](https://github.com/GoCodeColorado/BusinessIncentives/blob/master/docs/Code_Walkthrough5.png)
+![Criteria Mapping Tables](https://github.com/juliras/Business-Incentives/blob/master/docs/Code_Walkthrough5.png)
 
 The logic then uses this mapping to find what coded field value to use depending on the origin of the data:
 
-![Coded Field Mapping Logic](https://github.com/GoCodeColorado/BusinessIncentives/blob/master/docs/Code_Walkthrough6.png)
+![Coded Field Mapping Logic](https://github.com/juliras/Business-Incentives/blob/master/docs/Code_Walkthrough6.png)
 
 ## After compiling the Solution
 
