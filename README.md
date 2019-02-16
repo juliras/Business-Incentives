@@ -124,12 +124,12 @@ Create the databases in SQL:
 ## Use Case
 
 * Head to https://coloradoincentives.com/ 
-* Click "Find Opportunities" from the top menu
-* Enter a few keywords like "women grant"
-* Answer "What type of business is this?" by selecting "Existing"
-* Start filling out a business name in the text box below, and you should see a choice of existing business names to choose from. Type "Zoe" and select "Zoe's Coffee LLC"
-* You should see the address fields prepopulated for you as we retrieved the info from the Colorado Busisnesses dataset
-* Select an industry or more
-* Then select the type of assistance "Grant"
-* Click Search
+* From the top menu, click <b>Find Opportunities</b>
+* In the <b>Keywords</b> box, enter <b>women grant training</b>
+* Answer <b>What type of business is this?</b> by selecting <b>Existing</b>
+* Start typing <b>Zoe</b> in the <b>What is your business' name?</b> text box, and you should see a choice of existing business names to choose from, select <b>Zoe's Coffee LLC</b>
+* You should see the address fields pre-populated for you as we retrieved the info from the Colorado Busisnesses dataset
+* Select any <b>industry</b>
+* Then select <b>Grant</b> as the type of assistance
+* Click <b>Search</b>
 
