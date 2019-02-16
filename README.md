@@ -6,7 +6,7 @@ Business Incentives is a search tool for entrepreneurs that aggregates data from
 
 https://coloradoincentives.com/
 
-![Screenshot of Business Incentives](https://github.com/GoCodeColorado/BusinessIncentives/blob/master/docs/BI%20Home%20Page.png)
+![Screenshot of Business Incentives](https://github.com/juliras/Business-Incentives/blob/master/docs/BI%20Home%20Page.png)
 
 ## Features
 
